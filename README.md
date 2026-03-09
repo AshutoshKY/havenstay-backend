@@ -1,4 +1,4 @@
-# Airbnb Clone Backend
+# HavenStay Core Backend
 
 This repository contains a backend system for a hotel and room booking service (Airbnb clone) built in **GoLang**. It utilizes a strict **Domain-Driven Design (DDD)** architecture exposing both **REST** and **gRPC** interfaces, backed by **MySQL**.
 
@@ -18,14 +18,14 @@ graph TD
     Client((Client)) <-->|HTTP JSON| REST[Gin REST Server]
     Client <-->|HTTP/2 Protocol Buffers| GRPC[gRPC Server]
     
-    REST -->|v1.*Request (Protos)| Core
-    GRPC -->|v1.*Request (Protos)| Core
+    REST -->|Proto Request| Core
+    GRPC -->|Proto Request| Core
     
-    subgraph Domain: Property
-        Core[Core Service] -->|Entity (Business logic)| Repo[MySQL Repository]
+    subgraph Domain
+        Core[Core Service] -->|Entity Logic| Repo[MySQL Repository]
         Repo -->|GORM Model| DB[(MySQL)]
         Repo -->|Entity| Core
-        Core -->|v1.*Response (Protos)| REST
+        Core -->|Proto Response| REST
     end
 ```
 
@@ -37,11 +37,15 @@ graph TD
 5. **Storage mapping**: The repository converts the domain `Entity` into a GORM `Model`, persists it, and returns the converted `Entity` back to the Core.
 
 ## Tech Stack
-* **Language**: Go
-* **Database**: MySQL 8.0, interacting through GORM.
-* **Network Frameworks**: `gin-gonic` (HTTP), `grpc-go` (gRPC).
-* **Code Generation**: Google Protobuf (`protoc`).
-* **API Documentation**: `swaggo/swag` (Swagger generation).
+* **Language**: Go 1.21+
+* **Database**: MySQL 8.0
+* **ORM & Migrations**: GORM (`gorm.io/gorm`)
+* **Network Frameworks**: 
+  * `gin-gonic` (HTTP REST Router)
+  * `grpc-go` (High performance RPC framework)
+* **Code Generation & Schemas**: Google Protobuf (`protoc`, `protoc-gen-go`)
+* **API Documentation**: `swaggo/swag` (Swagger generation) + Swagger UI
+* **Containerization**: Docker & Docker Compose
 
 ## Running the Project
 
@@ -75,6 +79,13 @@ go run cmd/server/main.go
 Automated OpenAPI docs are provided via Swaggo! 
 When the server is booted, the interactive UI is accessible via the browser at:
 **[http://localhost:8080/swagger/index.html](http://localhost:8080/swagger/index.html)**
+
+Our domains expose the following REST endpoints (all mapped to internal gRPC payload handlers):
+* **Hosts**: `POST /v1/hosts`, `GET /v1/hosts/:id`
+* **Properties**: `POST /v1/properties`, `GET /v1/properties/:id`, `GET /v1/properties/host/:hostId`
+* **Guests**: `POST /v1/guests`, `GET /v1/guests/:id`
+* **Bookings**: `POST /v1/bookings`, `GET /v1/bookings/:id`, `GET /v1/bookings?guestId=:id`
+* **Wishlists**: `POST /v1/lists`, `GET /v1/lists?guestId=:id`
 
 ### Postman Support
 The root folder contains a `postman_collection.json`. You can immediately import this exact file into Postman to have all requests configured for local testing.
