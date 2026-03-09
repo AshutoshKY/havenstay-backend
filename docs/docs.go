@@ -9,10 +9,15 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "termsOfService": "http://swagger.io/terms/",
+        "termsOfService": "https://havenstay.localhost/terms",
         "contact": {
-            "name": "API Support",
-            "email": "support@airbnbclone.local"
+            "name": "HavenStay Platform Support",
+            "url": "https://github.com/AshutoshKY/havenstay-backend",
+            "email": "api-support@havenstay.local"
+        },
+        "license": {
+            "name": "MIT License",
+            "url": "https://opensource.org/licenses/MIT"
         },
         "version": "{{.Version}}"
     },
@@ -21,18 +26,18 @@ const docTemplate = `{
     "paths": {
         "/v1/bookings": {
             "get": {
-                "description": "Get all bookings made by a specific guest",
+                "description": "Poll the history of all active, past, and cancelled reservations tied to a specific Guest profile.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "bookings"
+                    "Bookings"
                 ],
-                "summary": "List Guest Bookings",
+                "summary": "Get a Guest's Booking History",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Guest ID",
+                        "description": "The ID of the Guest requesting their itinerary.",
                         "name": "guestId",
                         "in": "query",
                         "required": true
@@ -40,19 +45,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved guest bookings",
+                        "description": "An array of all historical and upcoming bookings for the Guest.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.ListBookingsResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request - Missing or invalid guest ID.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -60,7 +65,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "Make a booking for a property",
+                "description": "Securely initiates a booking transaction for a specific Property by a Guest.\nThe system will evaluate the requested dates, calculate total pricing, and attempt to reserve the asset.",
                 "consumes": [
                     "application/json"
                 ],
@@ -68,12 +73,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "bookings"
+                    "Bookings"
                 ],
-                "summary": "Create a Booking",
+                "summary": "Create a Booking Reservation",
                 "parameters": [
                     {
-                        "description": "Booking creation payload",
+                        "description": "Payload specifying the Guest ID, Property ID, Start Date, End Date, and calculated total price.",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -84,19 +89,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Successfully created booking",
+                        "description": "Reservation successfully created and locked.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.BookingResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Validation Bad Request - Overlapping dates or missing required fields.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -106,18 +111,18 @@ const docTemplate = `{
         },
         "/v1/bookings/{id}": {
             "get": {
-                "description": "Get details of a single booking by ID",
+                "description": "Fetch an exact copy of a completed or pending Booking reservation by its unique confirmation ID.\nTypical use-case: Displaying a digital receipt or itinerary details to the Guest.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "bookings"
+                    "Bookings"
                 ],
-                "summary": "Get a Booking",
+                "summary": "Retrieve Booking Invoice",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Booking ID",
+                        "description": "The numeric Reservation/Booking ID.",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -125,19 +130,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved booking",
+                        "description": "The retrieved itinerary and invoice details.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.BookingResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request - Invalid ID format.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Booking Not Found",
+                        "description": "Not Found - The reservation does not exist.",
                         "schema": {
                             "type": "string"
                         }
@@ -147,7 +152,7 @@ const docTemplate = `{
         },
         "/v1/guests": {
             "post": {
-                "description": "Register a new guest on the platform",
+                "description": "Creates a new Guest profile. Guests are users who can book properties and create wishlists.\nEnsure the email address provided is unique across the platform.",
                 "consumes": [
                     "application/json"
                 ],
@@ -155,12 +160,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "guests"
+                    "Guests"
                 ],
-                "summary": "Create a Guest",
+                "summary": "Register a new Guest",
                 "parameters": [
                     {
-                        "description": "Guest creation payload",
+                        "description": "Payload containing the Guest's personal details (Name, Email, Phone).",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -171,19 +176,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Successfully created guest",
+                        "description": "Guest successfully registered and assigned a unique ID.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.GuestResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Validation Error - Invalid payload format or duplicate email.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -193,18 +198,18 @@ const docTemplate = `{
         },
         "/v1/guests/{id}": {
             "get": {
-                "description": "Get details of a single guest by ID",
+                "description": "Fetches the profile and identity data for a specific Guest by their unique numeric identifier.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "guests"
+                    "Guests"
                 ],
-                "summary": "Get a Guest",
+                "summary": "Retrieve Guest details",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Guest ID",
+                        "description": "The unique numeric ID of the Guest to retrieve.",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -212,19 +217,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved guest",
+                        "description": "The requested Guest details.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.GuestResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request - The provided ID was invalid.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Guest Not Found",
+                        "description": "Not Found - No Guest exists with the provided ID.",
                         "schema": {
                             "type": "string"
                         }
@@ -234,7 +239,7 @@ const docTemplate = `{
         },
         "/v1/hosts": {
             "post": {
-                "description": "Register a new host on the platform",
+                "description": "Creates a new Host profile on the platform. Hosts are independent users capable of listing and managing multiple Properties.\nNote: A newly created host is automatically marked as ` + "`" + `is_verified: false` + "`" + ` pending administrator approval.",
                 "consumes": [
                     "application/json"
                 ],
@@ -242,12 +247,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "hosts"
+                    "Hosts"
                 ],
-                "summary": "Create a Host",
+                "summary": "Register a new Host",
                 "parameters": [
                     {
-                        "description": "Host creation payload",
+                        "description": "Payload containing the Host's basic contact and profile information (Name, Email, Phone, Location).",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -258,19 +263,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Successfully created host",
+                        "description": "Host successfully registered and assigned a unique ID.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.HostResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Validation Error - Invalid email format or missing required fields.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error - Database connection failure.",
                         "schema": {
                             "type": "string"
                         }
@@ -280,18 +285,18 @@ const docTemplate = `{
         },
         "/v1/hosts/{id}": {
             "get": {
-                "description": "Get details of a single host by ID",
+                "description": "Fetches the complete public profile of a Host by their unique identifier natively from the core system.\nUse this endpoint to display a Host's verification status, contact info, and join date on their public landing page.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "hosts"
+                    "Hosts"
                 ],
-                "summary": "Get a Host",
+                "summary": "Retrieve Host details",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Host ID",
+                        "description": "The unique numeric ID of the Host to retrieve.",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -299,19 +304,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved host",
+                        "description": "The requested Host details were found and returned successfully.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.HostResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request - The provided ID was not a valid integer.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Host Not Found",
+                        "description": "Not Found - No Host exists with the provided ID.",
                         "schema": {
                             "type": "string"
                         }
@@ -321,18 +326,18 @@ const docTemplate = `{
         },
         "/v1/lists": {
             "get": {
-                "description": "Retrieve the wishlist of a specific guest",
+                "description": "Fetches the complete array of bookmarked properties saved under a specific Guest account.\nActs as the primary data source for the \"Saved Homes\" UI tab.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "wishlists"
+                    "Wishlists"
                 ],
-                "summary": "Get Wishlist",
+                "summary": "View Guest Wishlist",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Guest ID",
+                        "description": "The target Guest's unique Identifier.",
                         "name": "guestId",
                         "in": "query",
                         "required": true
@@ -340,19 +345,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved guest's wishlist",
+                        "description": "An array wrapping the nested Property details saved by the user.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.GetWishlistResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -360,7 +365,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "Add a property to a guest's wishlist",
+                "description": "Bookmarks a specific property to a Guest's curated wishlist for later viewing or booking.\nUseful for encouraging users to return to properties they found engaging.",
                 "consumes": [
                     "application/json"
                 ],
@@ -368,12 +373,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "wishlists"
+                    "Wishlists"
                 ],
-                "summary": "Add to Wishlist",
+                "summary": "Save Property to Wishlist",
                 "parameters": [
                     {
-                        "description": "Wishlist addition payload",
+                        "description": "Payload connecting a Guest ID to a Property ID.",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -384,19 +389,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Successfully added to wishlist",
+                        "description": "A confirmation object encapsulating the newly bookmarked item constraint.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.WishlistResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request - Duplicate bookmark or invalid identifiers.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -406,23 +411,23 @@ const docTemplate = `{
         },
         "/v1/properties": {
             "get": {
-                "description": "Get a list of all properties",
+                "description": "Retrieve a sweeping list of all active property listings on the HavenStay platform.\n*(Note: In future versions, this will include global pagination and bounding-box map filters).*",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "properties"
+                    "Properties"
                 ],
-                "summary": "List properties",
+                "summary": "Browse all Properties",
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved list of properties",
+                        "description": "A comprehensive array of all available properties.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error while querying the database.",
                         "schema": {
                             "type": "string"
                         }
@@ -430,7 +435,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "Create a new property listing",
+                "description": "An authenticated Host can use this endpoint to publish a new real-estate listing.\nNote: You MUST pass a valid ` + "`" + `host_id` + "`" + ` representing an already-registered Host on the platform, or the database foreign-key constraint will reject the listing.",
                 "consumes": [
                     "application/json"
                 ],
@@ -438,12 +443,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "properties"
+                    "Properties"
                 ],
-                "summary": "Create a Property",
+                "summary": "List a new Property",
                 "parameters": [
                     {
-                        "description": "Property creation payload",
+                        "description": "The core details of the listing: Name, Description, Location String, and Nightly Price (Float).",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -454,19 +459,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Successfully created property",
+                        "description": "Property was published and is now live on the index.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.PropertyResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Validation Bad Request - Usually missing Host ID or malformed price.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -476,44 +481,44 @@ const docTemplate = `{
         },
         "/v1/properties/host/{hostId}": {
             "get": {
-                "description": "Get all properties listed by a specific host, with optional location filtering",
+                "description": "Get all properties listed specifically by one Host.\nThis endpoint powers the \"Host Dashboard\", allowing property owners to see all assets they have under management. Optionally, you can pass a ` + "`" + `location` + "`" + ` query to filter the host's properties by a specific city.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "properties"
+                    "Properties"
                 ],
-                "summary": "List Properties by Host",
+                "summary": "Host's Dashboard Properties",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Host ID",
+                        "description": "The Host ID managing these properties.",
                         "name": "hostId",
                         "in": "path",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "Location filter",
+                        "description": "Optional string to filter the resulting list by a specific city or region.",
                         "name": "location",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved host properties",
+                        "description": "A list of properties bound to the specified host.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal Server Error.",
                         "schema": {
                             "type": "string"
                         }
@@ -523,18 +528,18 @@ const docTemplate = `{
         },
         "/v1/properties/{id}": {
             "get": {
-                "description": "Get details of a single property by its ID",
+                "description": "Drill down into a specific property. Returns the exact title, host bindings, textual description, nightly price, and location coordinates formatted for front-end rendering.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
-                    "properties"
+                    "Properties"
                 ],
                 "summary": "Get Property Details",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Property ID",
+                        "description": "The exact Property ID to inspect.",
                         "name": "id",
                         "in": "path",
                         "required": true
@@ -542,19 +547,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully retrieved property",
+                        "description": "Full property overview returned.",
                         "schema": {
                             "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.PropertyResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Bad Request.",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Property Not Found",
+                        "description": "Property Not Found - the listing may have been deactivated.",
                         "schema": {
                             "type": "string"
                         }
@@ -876,12 +881,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "1.0",
+	Version:          "1.0.0",
 	Host:             "localhost:8080",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Airbnb Clone API",
-	Description:      "Backend REST API for a Hotel & Room Booking Service",
+	Title:            "HavenStay - Hotel & Room Booking API",
+	Description:      "Welcome to the HavenStay Backend API documentation! 🚀\n\nHavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.\n\n### Key Features:\n- **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.\n- **👩\u200d💼 Host & Guest Profiles**: Independent onboarding and profile management domains.\n- **📅 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**: Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

@@ -18,13 +18,27 @@ import (
 	_ "github.com/user/airbnb-test/docs" // Required for Swaggo
 )
 
-// @title Airbnb Clone API
-// @version 1.0
-// @description Backend REST API for a Hotel & Room Booking Service
-// @termsOfService http://swagger.io/terms/
+// @title HavenStay - Hotel & Room Booking API
+// @version 1.0.0
+// @description Welcome to the HavenStay Backend API documentation! 🚀
+// @description
+// @description HavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.
+// @description
+// @description ### Key Features:
+// @description - **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.
+// @description - **👩‍💼 Host & Guest Profiles**: Independent onboarding and profile management domains.
+// @description - **📅 Booking Engine**: Real-time reservation creation.
+// @description - **❤️ Wishlists**: Guests can curate lists of favorite properties.
+// @description
+// @description **Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.
+// @termsOfService https://havenstay.localhost/terms
 
-// @contact.name API Support
-// @contact.email support@airbnbclone.local
+// @contact.name HavenStay Platform Support
+// @contact.url https://github.com/AshutoshKY/havenstay-backend
+// @contact.email api-support@havenstay.local
+
+// @license.name MIT License
+// @license.url https://opensource.org/licenses/MIT
 
 // @host localhost:8080
 // @BasePath /

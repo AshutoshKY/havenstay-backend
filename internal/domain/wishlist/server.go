@@ -43,15 +43,16 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 	}
 }
 
-// @Summary Add to Wishlist
-// @Description Add a property to a guest's wishlist
-// @Tags wishlists
+// @Summary Save Property to Wishlist
+// @Description Bookmarks a specific property to a Guest's curated wishlist for later viewing or booking.
+// @Description Useful for encouraging users to return to properties they found engaging.
+// @Tags Wishlists
 // @Accept json
 // @Produce json
-// @Param request body pb.AddToWishlistRequest true "Wishlist addition payload"
-// @Success 201 {object} pb.WishlistResponse "Successfully added to wishlist"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 500 {object} string "Internal Server Error"
+// @Param request body pb.AddToWishlistRequest true "Payload connecting a Guest ID to a Property ID."
+// @Success 201 {object} pb.WishlistResponse "A confirmation object encapsulating the newly bookmarked item constraint."
+// @Failure 400 {object} string "Bad Request - Duplicate bookmark or invalid identifiers."
+// @Failure 500 {object} string "Internal Server Error."
 // @Router /v1/lists [post]
 func (h *HTTPServer) addToWishlist(c *gin.Context) {
 	var req pb.AddToWishlistRequest
@@ -68,14 +69,15 @@ func (h *HTTPServer) addToWishlist(c *gin.Context) {
 	c.JSON(http.StatusCreated, resp)
 }
 
-// @Summary Get Wishlist
-// @Description Retrieve the wishlist of a specific guest
-// @Tags wishlists
+// @Summary View Guest Wishlist
+// @Description Fetches the complete array of bookmarked properties saved under a specific Guest account.
+// @Description Acts as the primary data source for the "Saved Homes" UI tab.
+// @Tags Wishlists
 // @Produce json
-// @Param guestId query int true "Guest ID"
-// @Success 200 {object} pb.GetWishlistResponse "Successfully retrieved guest's wishlist"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 500 {object} string "Internal Server Error"
+// @Param guestId query int true "The target Guest's unique Identifier."
+// @Success 200 {object} pb.GetWishlistResponse "An array wrapping the nested Property details saved by the user."
+// @Failure 400 {object} string "Bad Request."
+// @Failure 500 {object} string "Internal Server Error."
 // @Router /v1/lists [get]
 func (h *HTTPServer) getWishlist(c *gin.Context) {
 	guestIdStr := c.Query("guestId")

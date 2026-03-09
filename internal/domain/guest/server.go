@@ -42,15 +42,16 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 	}
 }
 
-// @Summary Create a Guest
-// @Description Register a new guest on the platform
-// @Tags guests
+// @Summary Register a new Guest
+// @Description Creates a new Guest profile. Guests are users who can book properties and create wishlists.
+// @Description Ensure the email address provided is unique across the platform.
+// @Tags Guests
 // @Accept json
 // @Produce json
-// @Param request body pb.CreateGuestRequest true "Guest creation payload"
-// @Success 201 {object} pb.GuestResponse "Successfully created guest"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 500 {object} string "Internal Server Error"
+// @Param request body pb.CreateGuestRequest true "Payload containing the Guest's personal details (Name, Email, Phone)."
+// @Success 201 {object} pb.GuestResponse "Guest successfully registered and assigned a unique ID."
+// @Failure 400 {object} string "Validation Error - Invalid payload format or duplicate email."
+// @Failure 500 {object} string "Internal Server Error."
 // @Router /v1/guests [post]
 func (h *HTTPServer) createGuest(c *gin.Context) {
 	var req pb.CreateGuestRequest
@@ -67,14 +68,14 @@ func (h *HTTPServer) createGuest(c *gin.Context) {
 	c.JSON(http.StatusCreated, resp)
 }
 
-// @Summary Get a Guest
-// @Description Get details of a single guest by ID
-// @Tags guests
+// @Summary Retrieve Guest details
+// @Description Fetches the profile and identity data for a specific Guest by their unique numeric identifier.
+// @Tags Guests
 // @Produce json
-// @Param id path int true "Guest ID"
-// @Success 200 {object} pb.GuestResponse "Successfully retrieved guest"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 404 {object} string "Guest Not Found"
+// @Param id path int true "The unique numeric ID of the Guest to retrieve."
+// @Success 200 {object} pb.GuestResponse "The requested Guest details."
+// @Failure 400 {object} string "Bad Request - The provided ID was invalid."
+// @Failure 404 {object} string "Not Found - No Guest exists with the provided ID."
 // @Router /v1/guests/{id} [get]
 func (h *HTTPServer) getGuest(c *gin.Context) {
 	idStr := c.Param("id")

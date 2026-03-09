@@ -211,18 +211,31 @@ definitions:
 host: localhost:8080
 info:
   contact:
-    email: support@airbnbclone.local
-    name: API Support
-  description: Backend REST API for a Hotel & Room Booking Service
-  termsOfService: http://swagger.io/terms/
-  title: Airbnb Clone API
-  version: "1.0"
+    email: api-support@havenstay.local
+    name: HavenStay Platform Support
+    url: https://github.com/AshutoshKY/havenstay-backend
+  description: "Welcome to the HavenStay Backend API documentation! \U0001F680\n\nHavenStay
+    is a modern, high-performance Domain-Driven Design (DDD) backend built in Go.
+    It empowers Hosts to manage luxury properties and Guests to seamlessly book remote
+    getaways.\n\n### Key Features:\n- **\U0001F3D8️ Property Management**: Full CRUD
+    lifecycle for short-term rentals and luxury homes.\n- **\U0001F469‍\U0001F4BC
+    Host & Guest Profiles**: Independent onboarding and profile management domains.\n-
+    **\U0001F4C5 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**:
+    Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin
+    (REST), gRPC, Protobufs, MySQL 8, GORM."
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  termsOfService: https://havenstay.localhost/terms
+  title: HavenStay - Hotel & Room Booking API
+  version: 1.0.0
 paths:
   /v1/bookings:
     get:
-      description: Get all bookings made by a specific guest
+      description: Poll the history of all active, past, and cancelled reservations
+        tied to a specific Guest profile.
       parameters:
-      - description: Guest ID
+      - description: The ID of the Guest requesting their itinerary.
         in: query
         name: guestId
         required: true
@@ -231,26 +244,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved guest bookings
+          description: An array of all historical and upcoming bookings for the Guest.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.ListBookingsResponse'
         "400":
-          description: Bad Request
+          description: Bad Request - Missing or invalid guest ID.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: List Guest Bookings
+      summary: Get a Guest's Booking History
       tags:
-      - bookings
+      - Bookings
     post:
       consumes:
       - application/json
-      description: Make a booking for a property
+      description: |-
+        Securely initiates a booking transaction for a specific Property by a Guest.
+        The system will evaluate the requested dates, calculate total pricing, and attempt to reserve the asset.
       parameters:
-      - description: Booking creation payload
+      - description: Payload specifying the Guest ID, Property ID, Start Date, End
+          Date, and calculated total price.
         in: body
         name: request
         required: true
@@ -260,25 +276,28 @@ paths:
       - application/json
       responses:
         "201":
-          description: Successfully created booking
+          description: Reservation successfully created and locked.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.BookingResponse'
         "400":
-          description: Bad Request
+          description: Validation Bad Request - Overlapping dates or missing required
+            fields.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: Create a Booking
+      summary: Create a Booking Reservation
       tags:
-      - bookings
+      - Bookings
   /v1/bookings/{id}:
     get:
-      description: Get details of a single booking by ID
+      description: |-
+        Fetch an exact copy of a completed or pending Booking reservation by its unique confirmation ID.
+        Typical use-case: Displaying a digital receipt or itinerary details to the Guest.
       parameters:
-      - description: Booking ID
+      - description: The numeric Reservation/Booking ID.
         in: path
         name: id
         required: true
@@ -287,27 +306,30 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved booking
+          description: The retrieved itinerary and invoice details.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.BookingResponse'
         "400":
-          description: Bad Request
+          description: Bad Request - Invalid ID format.
           schema:
             type: string
         "404":
-          description: Booking Not Found
+          description: Not Found - The reservation does not exist.
           schema:
             type: string
-      summary: Get a Booking
+      summary: Retrieve Booking Invoice
       tags:
-      - bookings
+      - Bookings
   /v1/guests:
     post:
       consumes:
       - application/json
-      description: Register a new guest on the platform
+      description: |-
+        Creates a new Guest profile. Guests are users who can book properties and create wishlists.
+        Ensure the email address provided is unique across the platform.
       parameters:
-      - description: Guest creation payload
+      - description: Payload containing the Guest's personal details (Name, Email,
+          Phone).
         in: body
         name: request
         required: true
@@ -317,25 +339,26 @@ paths:
       - application/json
       responses:
         "201":
-          description: Successfully created guest
+          description: Guest successfully registered and assigned a unique ID.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.GuestResponse'
         "400":
-          description: Bad Request
+          description: Validation Error - Invalid payload format or duplicate email.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: Create a Guest
+      summary: Register a new Guest
       tags:
-      - guests
+      - Guests
   /v1/guests/{id}:
     get:
-      description: Get details of a single guest by ID
+      description: Fetches the profile and identity data for a specific Guest by their
+        unique numeric identifier.
       parameters:
-      - description: Guest ID
+      - description: The unique numeric ID of the Guest to retrieve.
         in: path
         name: id
         required: true
@@ -344,27 +367,30 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved guest
+          description: The requested Guest details.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.GuestResponse'
         "400":
-          description: Bad Request
+          description: Bad Request - The provided ID was invalid.
           schema:
             type: string
         "404":
-          description: Guest Not Found
+          description: Not Found - No Guest exists with the provided ID.
           schema:
             type: string
-      summary: Get a Guest
+      summary: Retrieve Guest details
       tags:
-      - guests
+      - Guests
   /v1/hosts:
     post:
       consumes:
       - application/json
-      description: Register a new host on the platform
+      description: |-
+        Creates a new Host profile on the platform. Hosts are independent users capable of listing and managing multiple Properties.
+        Note: A newly created host is automatically marked as `is_verified: false` pending administrator approval.
       parameters:
-      - description: Host creation payload
+      - description: Payload containing the Host's basic contact and profile information
+          (Name, Email, Phone, Location).
         in: body
         name: request
         required: true
@@ -374,25 +400,28 @@ paths:
       - application/json
       responses:
         "201":
-          description: Successfully created host
+          description: Host successfully registered and assigned a unique ID.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.HostResponse'
         "400":
-          description: Bad Request
+          description: Validation Error - Invalid email format or missing required
+            fields.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error - Database connection failure.
           schema:
             type: string
-      summary: Create a Host
+      summary: Register a new Host
       tags:
-      - hosts
+      - Hosts
   /v1/hosts/{id}:
     get:
-      description: Get details of a single host by ID
+      description: |-
+        Fetches the complete public profile of a Host by their unique identifier natively from the core system.
+        Use this endpoint to display a Host's verification status, contact info, and join date on their public landing page.
       parameters:
-      - description: Host ID
+      - description: The unique numeric ID of the Host to retrieve.
         in: path
         name: id
         required: true
@@ -401,25 +430,27 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved host
+          description: The requested Host details were found and returned successfully.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.HostResponse'
         "400":
-          description: Bad Request
+          description: Bad Request - The provided ID was not a valid integer.
           schema:
             type: string
         "404":
-          description: Host Not Found
+          description: Not Found - No Host exists with the provided ID.
           schema:
             type: string
-      summary: Get a Host
+      summary: Retrieve Host details
       tags:
-      - hosts
+      - Hosts
   /v1/lists:
     get:
-      description: Retrieve the wishlist of a specific guest
+      description: |-
+        Fetches the complete array of bookmarked properties saved under a specific Guest account.
+        Acts as the primary data source for the "Saved Homes" UI tab.
       parameters:
-      - description: Guest ID
+      - description: The target Guest's unique Identifier.
         in: query
         name: guestId
         required: true
@@ -428,26 +459,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved guest's wishlist
+          description: An array wrapping the nested Property details saved by the
+            user.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.GetWishlistResponse'
         "400":
-          description: Bad Request
+          description: Bad Request.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: Get Wishlist
+      summary: View Guest Wishlist
       tags:
-      - wishlists
+      - Wishlists
     post:
       consumes:
       - application/json
-      description: Add a property to a guest's wishlist
+      description: |-
+        Bookmarks a specific property to a Guest's curated wishlist for later viewing or booking.
+        Useful for encouraging users to return to properties they found engaging.
       parameters:
-      - description: Wishlist addition payload
+      - description: Payload connecting a Guest ID to a Property ID.
         in: body
         name: request
         required: true
@@ -457,43 +491,49 @@ paths:
       - application/json
       responses:
         "201":
-          description: Successfully added to wishlist
+          description: A confirmation object encapsulating the newly bookmarked item
+            constraint.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.WishlistResponse'
         "400":
-          description: Bad Request
+          description: Bad Request - Duplicate bookmark or invalid identifiers.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: Add to Wishlist
+      summary: Save Property to Wishlist
       tags:
-      - wishlists
+      - Wishlists
   /v1/properties:
     get:
-      description: Get a list of all properties
+      description: |-
+        Retrieve a sweeping list of all active property listings on the HavenStay platform.
+        *(Note: In future versions, this will include global pagination and bounding-box map filters).*
       produces:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved list of properties
+          description: A comprehensive array of all available properties.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse'
         "500":
-          description: Internal Server Error
+          description: Internal Server Error while querying the database.
           schema:
             type: string
-      summary: List properties
+      summary: Browse all Properties
       tags:
-      - properties
+      - Properties
     post:
       consumes:
       - application/json
-      description: Create a new property listing
+      description: |-
+        An authenticated Host can use this endpoint to publish a new real-estate listing.
+        Note: You MUST pass a valid `host_id` representing an already-registered Host on the platform, or the database foreign-key constraint will reject the listing.
       parameters:
-      - description: Property creation payload
+      - description: 'The core details of the listing: Name, Description, Location
+          String, and Nightly Price (Float).'
         in: body
         name: request
         required: true
@@ -503,25 +543,28 @@ paths:
       - application/json
       responses:
         "201":
-          description: Successfully created property
+          description: Property was published and is now live on the index.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.PropertyResponse'
         "400":
-          description: Bad Request
+          description: Validation Bad Request - Usually missing Host ID or malformed
+            price.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: Create a Property
+      summary: List a new Property
       tags:
-      - properties
+      - Properties
   /v1/properties/{id}:
     get:
-      description: Get details of a single property by its ID
+      description: Drill down into a specific property. Returns the exact title, host
+        bindings, textual description, nightly price, and location coordinates formatted
+        for front-end rendering.
       parameters:
-      - description: Property ID
+      - description: The exact Property ID to inspect.
         in: path
         name: id
         required: true
@@ -530,31 +573,33 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved property
+          description: Full property overview returned.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.PropertyResponse'
         "400":
-          description: Bad Request
+          description: Bad Request.
           schema:
             type: string
         "404":
-          description: Property Not Found
+          description: Property Not Found - the listing may have been deactivated.
           schema:
             type: string
       summary: Get Property Details
       tags:
-      - properties
+      - Properties
   /v1/properties/host/{hostId}:
     get:
-      description: Get all properties listed by a specific host, with optional location
-        filtering
+      description: |-
+        Get all properties listed specifically by one Host.
+        This endpoint powers the "Host Dashboard", allowing property owners to see all assets they have under management. Optionally, you can pass a `location` query to filter the host's properties by a specific city.
       parameters:
-      - description: Host ID
+      - description: The Host ID managing these properties.
         in: path
         name: hostId
         required: true
         type: integer
-      - description: Location filter
+      - description: Optional string to filter the resulting list by a specific city
+          or region.
         in: query
         name: location
         type: string
@@ -562,18 +607,18 @@ paths:
       - application/json
       responses:
         "200":
-          description: Successfully retrieved host properties
+          description: A list of properties bound to the specified host.
           schema:
             $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse'
         "400":
-          description: Bad Request
+          description: Bad Request.
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Internal Server Error.
           schema:
             type: string
-      summary: List Properties by Host
+      summary: Host's Dashboard Properties
       tags:
-      - properties
+      - Properties
 swagger: "2.0"

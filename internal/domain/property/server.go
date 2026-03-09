@@ -54,12 +54,13 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 	}
 }
 
-// @Summary List properties
-// @Description Get a list of all properties
-// @Tags properties
+// @Summary Browse all Properties
+// @Description Retrieve a sweeping list of all active property listings on the HavenStay platform.
+// @Description *(Note: In future versions, this will include global pagination and bounding-box map filters).*
+// @Tags Properties
 // @Produce json
-// @Success 200 {object} pb.ListPropertiesResponse "Successfully retrieved list of properties"
-// @Failure 500 {object} string "Internal Server Error"
+// @Success 200 {object} pb.ListPropertiesResponse "A comprehensive array of all available properties."
+// @Failure 500 {object} string "Internal Server Error while querying the database."
 // @Router /v1/properties [get]
 func (h *HTTPServer) listProperties(c *gin.Context) {
 	resp, err := h.svc.ListProperties(c.Request.Context(), &pb.ListPropertiesRequest{})
@@ -71,13 +72,13 @@ func (h *HTTPServer) listProperties(c *gin.Context) {
 }
 
 // @Summary Get Property Details
-// @Description Get details of a single property by its ID
-// @Tags properties
+// @Description Drill down into a specific property. Returns the exact title, host bindings, textual description, nightly price, and location coordinates formatted for front-end rendering.
+// @Tags Properties
 // @Produce json
-// @Param id path int true "Property ID"
-// @Success 200 {object} pb.PropertyResponse "Successfully retrieved property"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 404 {object} string "Property Not Found"
+// @Param id path int true "The exact Property ID to inspect."
+// @Success 200 {object} pb.PropertyResponse "Full property overview returned."
+// @Failure 400 {object} string "Bad Request."
+// @Failure 404 {object} string "Property Not Found - the listing may have been deactivated."
 // @Router /v1/properties/{id} [get]
 func (h *HTTPServer) getProperty(c *gin.Context) {
 	idStr := c.Param("id")
@@ -95,15 +96,16 @@ func (h *HTTPServer) getProperty(c *gin.Context) {
 	c.JSON(http.StatusOK, resp)
 }
 
-// @Summary Create a Property
-// @Description Create a new property listing
-// @Tags properties
+// @Summary List a new Property
+// @Description An authenticated Host can use this endpoint to publish a new real-estate listing.
+// @Description Note: You MUST pass a valid `host_id` representing an already-registered Host on the platform, or the database foreign-key constraint will reject the listing.
+// @Tags Properties
 // @Accept json
 // @Produce json
-// @Param request body pb.CreatePropertyRequest true "Property creation payload"
-// @Success 201 {object} pb.PropertyResponse "Successfully created property"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 500 {object} string "Internal Server Error"
+// @Param request body pb.CreatePropertyRequest true "The core details of the listing: Name, Description, Location String, and Nightly Price (Float)."
+// @Success 201 {object} pb.PropertyResponse "Property was published and is now live on the index."
+// @Failure 400 {object} string "Validation Bad Request - Usually missing Host ID or malformed price."
+// @Failure 500 {object} string "Internal Server Error."
 // @Router /v1/properties [post]
 func (h *HTTPServer) createProperty(c *gin.Context) {
 	var req pb.CreatePropertyRequest
@@ -120,15 +122,16 @@ func (h *HTTPServer) createProperty(c *gin.Context) {
 	c.JSON(http.StatusCreated, resp)
 }
 
-// @Summary List Properties by Host
-// @Description Get all properties listed by a specific host, with optional location filtering
-// @Tags properties
+// @Summary Host's Dashboard Properties
+// @Description Get all properties listed specifically by one Host.
+// @Description This endpoint powers the "Host Dashboard", allowing property owners to see all assets they have under management. Optionally, you can pass a `location` query to filter the host's properties by a specific city.
+// @Tags Properties
 // @Produce json
-// @Param hostId path int true "Host ID"
-// @Param location query string false "Location filter"
-// @Success 200 {object} pb.ListPropertiesResponse "Successfully retrieved host properties"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 500 {object} string "Internal Server Error"
+// @Param hostId path int true "The Host ID managing these properties."
+// @Param location query string false "Optional string to filter the resulting list by a specific city or region."
+// @Success 200 {object} pb.ListPropertiesResponse "A list of properties bound to the specified host."
+// @Failure 400 {object} string "Bad Request."
+// @Failure 500 {object} string "Internal Server Error."
 // @Router /v1/properties/host/{hostId} [get]
 func (h *HTTPServer) listPropertiesByHost(c *gin.Context) {
 	hostIdStr := c.Param("hostId")

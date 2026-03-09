@@ -9,12 +9,12 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "75e7a80b-bff6-4da4-a62f-e9f55f9e1738",
-                            "name": "List Guest Bookings",
+                            "id": "58d5dbb4-9d15-45c4-b233-92a8e184ab53",
+                            "name": "Get a Guest's Booking History",
                             "request": {
-                                "name": "List Guest Bookings",
+                                "name": "Get a Guest's Booking History",
                                 "description": {
-                                    "content": "Get all bookings made by a specific guest",
+                                    "content": "Poll the history of all active, past, and cancelled reservations tied to a specific Guest profile.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -29,7 +29,7 @@
                                         {
                                             "disabled": false,
                                             "description": {
-                                                "content": "(Required) Guest ID",
+                                                "content": "(Required) The ID of the Guest requesting their itinerary.",
                                                 "type": "text/plain"
                                             },
                                             "key": "guestId",
@@ -50,8 +50,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "055d65e0-a122-4fd4-a5ea-55a43c065107",
-                                    "name": "Successfully retrieved guest bookings",
+                                    "id": "9d949a69-c2ef-41b6-8c7b-237ab4903042",
+                                    "name": "An array of all historical and upcoming bookings for the Guest.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -65,7 +65,7 @@
                                                 {
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The ID of the Guest requesting their itinerary.",
                                                         "type": "text/plain"
                                                     },
                                                     "key": "guestId",
@@ -96,8 +96,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "9349fd05-8e1c-4cae-882b-6d47dce141a8",
-                                    "name": "Bad Request",
+                                    "id": "3a769beb-2c6a-48db-8d5b-49e5a1f50b02",
+                                    "name": "Bad Request - Missing or invalid guest ID.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -111,7 +111,7 @@
                                                 {
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The ID of the Guest requesting their itinerary.",
                                                         "type": "text/plain"
                                                     },
                                                     "key": "guestId",
@@ -142,8 +142,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "7401f25c-a7d5-4acc-b36a-fb1dc4c266cc",
-                                    "name": "Internal Server Error",
+                                    "id": "f932661d-b715-4d89-9523-6d43b2bf152d",
+                                    "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -157,7 +157,7 @@
                                                 {
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The ID of the Guest requesting their itinerary.",
                                                         "type": "text/plain"
                                                     },
                                                     "key": "guestId",
@@ -194,12 +194,12 @@
                             }
                         },
                         {
-                            "id": "24b17efd-08a3-40ef-a865-6be7793f03fa",
-                            "name": "Create a Booking",
+                            "id": "55577e6a-db53-4ba2-a4a1-ceef818c4a56",
+                            "name": "Create a Booking Reservation",
                             "request": {
-                                "name": "Create a Booking",
+                                "name": "Create a Booking Reservation",
                                 "description": {
-                                    "content": "Make a booking for a property",
+                                    "content": "Securely initiates a booking transaction for a specific Property by a Guest.\nThe system will evaluate the requested dates, calculate total pricing, and attempt to reserve the asset.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -238,8 +238,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "c0b0ead8-6cf5-445d-9ab3-ea4488026703",
-                                    "name": "Successfully created booking",
+                                    "id": "0e6cfd79-3f55-4b33-aca7-d326b427af9f",
+                                    "name": "Reservation successfully created and locked.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -287,8 +287,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "1181f20b-dace-4028-a27d-f77d34a3beb4",
-                                    "name": "Bad Request",
+                                    "id": "6791e15d-43ea-4459-991b-d096bcd82102",
+                                    "name": "Validation Bad Request - Overlapping dates or missing required fields.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -336,8 +336,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "579f88c0-1c18-4e16-9904-a82038f6e67b",
-                                    "name": "Internal Server Error",
+                                    "id": "65019d22-947f-49f0-a693-91871aa305c2",
+                                    "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -395,12 +395,12 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "dd387851-1aa9-4184-8c0e-22c848b9ba39",
-                                    "name": "Get a Booking",
+                                    "id": "758b2b7a-b8e3-417f-b963-77e45ee9a807",
+                                    "name": "Retrieve Booking Invoice",
                                     "request": {
-                                        "name": "Get a Booking",
+                                        "name": "Retrieve Booking Invoice",
                                         "description": {
-                                            "content": "Get details of a single booking by ID",
+                                            "content": "Fetch an exact copy of a completed or pending Booking reservation by its unique confirmation ID.\nTypical use-case: Displaying a digital receipt or itinerary details to the Guest.",
                                             "type": "text/plain"
                                         },
                                         "url": {
@@ -420,7 +420,7 @@
                                                     "key": "id",
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Booking ID",
+                                                        "content": "(Required) The numeric Reservation/Booking ID.",
                                                         "type": "text/plain"
                                                     }
                                                 }
@@ -438,8 +438,8 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "c5b8fd21-fe18-457d-8c8d-a4c934fd5ad2",
-                                            "name": "Successfully retrieved booking",
+                                            "id": "50dc69c7-76ac-43b5-a60a-7121526aa051",
+                                            "name": "The retrieved itinerary and invoice details.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -455,7 +455,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Booking ID",
+                                                                "content": "(Required) The numeric Reservation/Booking ID.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -486,8 +486,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "67783574-c3eb-4ed4-b024-5a650a3b396b",
-                                            "name": "Bad Request",
+                                            "id": "6adb2d50-3c18-46e7-8625-b550d1b60e28",
+                                            "name": "Bad Request - Invalid ID format.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -503,7 +503,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Booking ID",
+                                                                "content": "(Required) The numeric Reservation/Booking ID.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -534,8 +534,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "2aaaee51-4d48-4d5f-a5a7-89deddcce110",
-                                            "name": "Booking Not Found",
+                                            "id": "bf0d27bd-7d48-4cfd-bfda-1ce0a6d6d972",
+                                            "name": "Not Found - The reservation does not exist.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -551,7 +551,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Booking ID",
+                                                                "content": "(Required) The numeric Reservation/Booking ID.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -596,12 +596,12 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "2a4fa4b5-f315-4ef5-8d7c-c7e088836c2f",
-                            "name": "Create a Guest",
+                            "id": "ec15d9a4-1a09-4b6b-8a6f-818f02de154d",
+                            "name": "Register a new Guest",
                             "request": {
-                                "name": "Create a Guest",
+                                "name": "Register a new Guest",
                                 "description": {
-                                    "content": "Register a new guest on the platform",
+                                    "content": "Creates a new Guest profile. Guests are users who can book properties and create wishlists.\nEnsure the email address provided is unique across the platform.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -640,8 +640,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "ab59f96f-1738-4e17-b2e7-8c3a7d3746b5",
-                                    "name": "Successfully created guest",
+                                    "id": "fb90b5c0-98bf-453a-97f6-37dde3786370",
+                                    "name": "Guest successfully registered and assigned a unique ID.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -689,8 +689,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "ce9ac11e-7cc2-4c79-aecf-47f98f2251b3",
-                                    "name": "Bad Request",
+                                    "id": "c6657ebc-f649-4f48-a82d-5a58bf91c971",
+                                    "name": "Validation Error - Invalid payload format or duplicate email.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -738,8 +738,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "77490c19-53f2-4d0a-b528-de09fc2c8556",
-                                    "name": "Internal Server Error",
+                                    "id": "6e7a61f4-235d-436d-8967-c9c775676c8e",
+                                    "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -797,12 +797,12 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "07e16097-15f0-421c-b418-7072dc5e16b7",
-                                    "name": "Get a Guest",
+                                    "id": "d6c9b402-966a-4698-a02c-6aaa5891e1ca",
+                                    "name": "Retrieve Guest details",
                                     "request": {
-                                        "name": "Get a Guest",
+                                        "name": "Retrieve Guest details",
                                         "description": {
-                                            "content": "Get details of a single guest by ID",
+                                            "content": "Fetches the profile and identity data for a specific Guest by their unique numeric identifier.",
                                             "type": "text/plain"
                                         },
                                         "url": {
@@ -822,7 +822,7 @@
                                                     "key": "id",
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The unique numeric ID of the Guest to retrieve.",
                                                         "type": "text/plain"
                                                     }
                                                 }
@@ -840,8 +840,8 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "6b639b98-0bcc-4a94-b7d9-8abc035e33b6",
-                                            "name": "Successfully retrieved guest",
+                                            "id": "375bfa2c-bf45-41ef-a1aa-ad46165b8c77",
+                                            "name": "The requested Guest details.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -857,7 +857,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Guest ID",
+                                                                "content": "(Required) The unique numeric ID of the Guest to retrieve.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -888,8 +888,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "28b429d7-3a9e-4955-9573-e95341653e3a",
-                                            "name": "Bad Request",
+                                            "id": "490594da-d00f-4357-9453-25c14707536e",
+                                            "name": "Bad Request - The provided ID was invalid.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -905,7 +905,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Guest ID",
+                                                                "content": "(Required) The unique numeric ID of the Guest to retrieve.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -936,8 +936,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "727d76c5-9504-475f-98fa-43617de1ceb7",
-                                            "name": "Guest Not Found",
+                                            "id": "3d52db19-8b4d-4947-8c8e-3212d2ae8635",
+                                            "name": "Not Found - No Guest exists with the provided ID.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -953,7 +953,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Guest ID",
+                                                                "content": "(Required) The unique numeric ID of the Guest to retrieve.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -998,12 +998,12 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "10cfe462-5ba2-4bee-a544-965dfbeb37e6",
-                            "name": "Create a Host",
+                            "id": "0fe4f064-dd23-4242-b78c-57953816bb1d",
+                            "name": "Register a new Host",
                             "request": {
-                                "name": "Create a Host",
+                                "name": "Register a new Host",
                                 "description": {
-                                    "content": "Register a new host on the platform",
+                                    "content": "Creates a new Host profile on the platform. Hosts are independent users capable of listing and managing multiple Properties.\nNote: A newly created host is automatically marked as `is_verified: false` pending administrator approval.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -1042,8 +1042,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "f4d985de-d1df-4016-afc5-ea80d6b49aac",
-                                    "name": "Successfully created host",
+                                    "id": "05fef41f-dcc8-4151-b163-29bbefaef595",
+                                    "name": "Host successfully registered and assigned a unique ID.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1091,8 +1091,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "a28c59f8-3050-4a2b-84cb-d1e197910a92",
-                                    "name": "Bad Request",
+                                    "id": "2a653c30-9353-4afe-9200-76981e8619bc",
+                                    "name": "Validation Error - Invalid email format or missing required fields.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1140,8 +1140,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "e5e024f0-6eae-4539-9ae6-d9f85a5da236",
-                                    "name": "Internal Server Error",
+                                    "id": "bbaaa025-d5bd-46fb-9d3c-ebb4239ea523",
+                                    "name": "Internal Server Error - Database connection failure.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1199,12 +1199,12 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "7da06597-85fc-482f-8d6b-d516d1237eda",
-                                    "name": "Get a Host",
+                                    "id": "9d9a7a03-e36b-41cc-9bbf-3a8184597e8e",
+                                    "name": "Retrieve Host details",
                                     "request": {
-                                        "name": "Get a Host",
+                                        "name": "Retrieve Host details",
                                         "description": {
-                                            "content": "Get details of a single host by ID",
+                                            "content": "Fetches the complete public profile of a Host by their unique identifier natively from the core system.\nUse this endpoint to display a Host's verification status, contact info, and join date on their public landing page.",
                                             "type": "text/plain"
                                         },
                                         "url": {
@@ -1224,7 +1224,7 @@
                                                     "key": "id",
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Host ID",
+                                                        "content": "(Required) The unique numeric ID of the Host to retrieve.",
                                                         "type": "text/plain"
                                                     }
                                                 }
@@ -1242,8 +1242,8 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "113bb98b-516d-4804-91c4-183db5f0b3f1",
-                                            "name": "Successfully retrieved host",
+                                            "id": "0701deb6-8770-4068-90f4-1d7fdecf6862",
+                                            "name": "The requested Host details were found and returned successfully.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -1259,7 +1259,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Host ID",
+                                                                "content": "(Required) The unique numeric ID of the Host to retrieve.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -1290,8 +1290,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "82295980-ff11-4a80-a52e-8ff2c8b9b366",
-                                            "name": "Bad Request",
+                                            "id": "9d9e858c-bafe-4fd9-976f-99664027b568",
+                                            "name": "Bad Request - The provided ID was not a valid integer.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -1307,7 +1307,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Host ID",
+                                                                "content": "(Required) The unique numeric ID of the Host to retrieve.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -1338,8 +1338,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "8fa122e4-07cf-4298-9119-b8735a9bcf5e",
-                                            "name": "Host Not Found",
+                                            "id": "c22aea03-c839-49ec-9af2-084627e37745",
+                                            "name": "Not Found - No Host exists with the provided ID.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -1355,7 +1355,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Host ID",
+                                                                "content": "(Required) The unique numeric ID of the Host to retrieve.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -1400,12 +1400,12 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "594d5619-57ad-4948-9d66-014cdefc70d6",
-                            "name": "Get Wishlist",
+                            "id": "fa870918-1f00-49e8-9197-4632f893648d",
+                            "name": "View Guest Wishlist",
                             "request": {
-                                "name": "Get Wishlist",
+                                "name": "View Guest Wishlist",
                                 "description": {
-                                    "content": "Retrieve the wishlist of a specific guest",
+                                    "content": "Fetches the complete array of bookmarked properties saved under a specific Guest account.\nActs as the primary data source for the \"Saved Homes\" UI tab.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -1420,7 +1420,7 @@
                                         {
                                             "disabled": false,
                                             "description": {
-                                                "content": "(Required) Guest ID",
+                                                "content": "(Required) The target Guest's unique Identifier.",
                                                 "type": "text/plain"
                                             },
                                             "key": "guestId",
@@ -1441,8 +1441,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "d035a9d7-005e-4ad6-93df-294c7d5d1022",
-                                    "name": "Successfully retrieved guest's wishlist",
+                                    "id": "bb59dbab-5990-412a-801a-77dc30d8323e",
+                                    "name": "An array wrapping the nested Property details saved by the user.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1456,7 +1456,7 @@
                                                 {
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The target Guest's unique Identifier.",
                                                         "type": "text/plain"
                                                     },
                                                     "key": "guestId",
@@ -1487,8 +1487,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "2092461d-bd74-48a6-9f52-28a882f3f812",
-                                    "name": "Bad Request",
+                                    "id": "a8353d2e-ee0e-41fa-921d-0f11f36e1e52",
+                                    "name": "Bad Request.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1502,7 +1502,7 @@
                                                 {
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The target Guest's unique Identifier.",
                                                         "type": "text/plain"
                                                     },
                                                     "key": "guestId",
@@ -1533,8 +1533,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "3592702b-c238-494d-b2a1-8bf65f1f5a26",
-                                    "name": "Internal Server Error",
+                                    "id": "4faed177-40c8-4da3-adb8-5e7dfda5483b",
+                                    "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1548,7 +1548,7 @@
                                                 {
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Guest ID",
+                                                        "content": "(Required) The target Guest's unique Identifier.",
                                                         "type": "text/plain"
                                                     },
                                                     "key": "guestId",
@@ -1585,12 +1585,12 @@
                             }
                         },
                         {
-                            "id": "f871e314-01b8-4900-bf99-0b66c9fd4ecf",
-                            "name": "Add to Wishlist",
+                            "id": "99c488f8-1520-4628-acbc-9cbc12f22d05",
+                            "name": "Save Property to Wishlist",
                             "request": {
-                                "name": "Add to Wishlist",
+                                "name": "Save Property to Wishlist",
                                 "description": {
-                                    "content": "Add a property to a guest's wishlist",
+                                    "content": "Bookmarks a specific property to a Guest's curated wishlist for later viewing or booking.\nUseful for encouraging users to return to properties they found engaging.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -1629,8 +1629,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "87a08d0c-3b3d-4a76-839d-3fb52f852464",
-                                    "name": "Successfully added to wishlist",
+                                    "id": "caa18383-05a4-4a95-821c-fe408df0058f",
+                                    "name": "A confirmation object encapsulating the newly bookmarked item constraint.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1678,8 +1678,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "15ff858d-5f4c-4b5a-8a00-fee16a64a154",
-                                    "name": "Bad Request",
+                                    "id": "8f9659e5-0551-44ed-b0c3-c6e6c8f0e942",
+                                    "name": "Bad Request - Duplicate bookmark or invalid identifiers.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1727,8 +1727,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "123fc7a7-3161-4390-bd5a-ec02e625bfa0",
-                                    "name": "Internal Server Error",
+                                    "id": "564d53ff-c312-4b5a-b1e9-926860ceb727",
+                                    "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1788,12 +1788,12 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "049f6171-7795-4c70-90a7-a1a95565ea74",
-                            "name": "List properties",
+                            "id": "7b14ec18-c4b2-4053-aeb8-e5ac5663c464",
+                            "name": "Browse all Properties",
                             "request": {
-                                "name": "List properties",
+                                "name": "Browse all Properties",
                                 "description": {
-                                    "content": "Get a list of all properties",
+                                    "content": "Retrieve a sweeping list of all active property listings on the HavenStay platform.\n*(Note: In future versions, this will include global pagination and bounding-box map filters).*",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -1819,8 +1819,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "328e94e3-f2ab-4a02-bfa6-fedb07190f40",
-                                    "name": "Successfully retrieved list of properties",
+                                    "id": "dfe7d6a0-2f9a-44c1-a547-bebce8792882",
+                                    "name": "A comprehensive array of all available properties.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1855,8 +1855,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "894432f2-6b49-40e3-9132-9e3780e7ad3c",
-                                    "name": "Internal Server Error",
+                                    "id": "114bede9-80e2-4aaf-b287-7bdfb6faa045",
+                                    "name": "Internal Server Error while querying the database.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1897,12 +1897,12 @@
                             }
                         },
                         {
-                            "id": "59af9379-a7d8-4486-9fa0-bd3a4d7413e6",
-                            "name": "Create a Property",
+                            "id": "3f28e6cd-a337-45a9-a7a6-b6a941d90b39",
+                            "name": "List a new Property",
                             "request": {
-                                "name": "Create a Property",
+                                "name": "List a new Property",
                                 "description": {
-                                    "content": "Create a new property listing",
+                                    "content": "An authenticated Host can use this endpoint to publish a new real-estate listing.\nNote: You MUST pass a valid `host_id` representing an already-registered Host on the platform, or the database foreign-key constraint will reject the listing.",
                                     "type": "text/plain"
                                 },
                                 "url": {
@@ -1941,8 +1941,8 @@
                             },
                             "response": [
                                 {
-                                    "id": "c55e722d-79d7-4dc3-965f-ef6bdb187b71",
-                                    "name": "Successfully created property",
+                                    "id": "4aae054c-7323-4475-a15a-64a36b12bb0e",
+                                    "name": "Property was published and is now live on the index.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -1990,8 +1990,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "440f5289-88a6-4946-8909-7f76adfd9da8",
-                                    "name": "Bad Request",
+                                    "id": "5cd64461-17f8-45ef-a481-b08a3684a526",
+                                    "name": "Validation Bad Request - Usually missing Host ID or malformed price.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -2039,8 +2039,8 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "85ecd9c3-c02c-4376-8f23-93b4fdb87189",
-                                    "name": "Internal Server Error",
+                                    "id": "95b50aa9-ac01-48a7-9bfa-06bed56f8319",
+                                    "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
                                             "path": [
@@ -2102,12 +2102,12 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "cf716b06-9d09-4f51-b0fa-32c3a9d70aa9",
-                                            "name": "List Properties by Host",
+                                            "id": "57f2f588-ffa0-4ab6-967b-d7aeebea0c0f",
+                                            "name": "Host's Dashboard Properties",
                                             "request": {
-                                                "name": "List Properties by Host",
+                                                "name": "Host's Dashboard Properties",
                                                 "description": {
-                                                    "content": "Get all properties listed by a specific host, with optional location filtering",
+                                                    "content": "Get all properties listed specifically by one Host.\nThis endpoint powers the \"Host Dashboard\", allowing property owners to see all assets they have under management. Optionally, you can pass a `location` query to filter the host's properties by a specific city.",
                                                     "type": "text/plain"
                                                 },
                                                 "url": {
@@ -2124,7 +2124,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "Location filter",
+                                                                "content": "Optional string to filter the resulting list by a specific city or region.",
                                                                 "type": "text/plain"
                                                             },
                                                             "key": "location",
@@ -2138,7 +2138,7 @@
                                                             "key": "hostId",
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Host ID",
+                                                                "content": "(Required) The Host ID managing these properties.",
                                                                 "type": "text/plain"
                                                             }
                                                         }
@@ -2156,8 +2156,8 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "52108969-9317-4c36-85e4-c7062e1bfe6b",
-                                                    "name": "Successfully retrieved host properties",
+                                                    "id": "8d5a6f0e-1c9b-4f86-8c42-57cd11eec000",
+                                                    "name": "A list of properties bound to the specified host.",
                                                     "originalRequest": {
                                                         "url": {
                                                             "path": [
@@ -2173,7 +2173,7 @@
                                                                 {
                                                                     "disabled": false,
                                                                     "description": {
-                                                                        "content": "Location filter",
+                                                                        "content": "Optional string to filter the resulting list by a specific city or region.",
                                                                         "type": "text/plain"
                                                                     },
                                                                     "key": "location",
@@ -2184,7 +2184,7 @@
                                                                 {
                                                                     "disabled": false,
                                                                     "description": {
-                                                                        "content": "(Required) Host ID",
+                                                                        "content": "(Required) The Host ID managing these properties.",
                                                                         "type": "text/plain"
                                                                     },
                                                                     "type": "any",
@@ -2215,8 +2215,8 @@
                                                     "_postman_previewlanguage": "json"
                                                 },
                                                 {
-                                                    "id": "2bf679d0-82a5-405f-93bb-0dffb2db5815",
-                                                    "name": "Bad Request",
+                                                    "id": "38901c62-56b0-4320-8d76-f63478babe53",
+                                                    "name": "Bad Request.",
                                                     "originalRequest": {
                                                         "url": {
                                                             "path": [
@@ -2232,7 +2232,7 @@
                                                                 {
                                                                     "disabled": false,
                                                                     "description": {
-                                                                        "content": "Location filter",
+                                                                        "content": "Optional string to filter the resulting list by a specific city or region.",
                                                                         "type": "text/plain"
                                                                     },
                                                                     "key": "location",
@@ -2243,7 +2243,7 @@
                                                                 {
                                                                     "disabled": false,
                                                                     "description": {
-                                                                        "content": "(Required) Host ID",
+                                                                        "content": "(Required) The Host ID managing these properties.",
                                                                         "type": "text/plain"
                                                                     },
                                                                     "type": "any",
@@ -2274,8 +2274,8 @@
                                                     "_postman_previewlanguage": "json"
                                                 },
                                                 {
-                                                    "id": "951af976-c01e-472d-918c-e4ef5b1c1e49",
-                                                    "name": "Internal Server Error",
+                                                    "id": "619fdc4d-c979-41d8-af58-0fc5d766cec8",
+                                                    "name": "Internal Server Error.",
                                                     "originalRequest": {
                                                         "url": {
                                                             "path": [
@@ -2291,7 +2291,7 @@
                                                                 {
                                                                     "disabled": false,
                                                                     "description": {
-                                                                        "content": "Location filter",
+                                                                        "content": "Optional string to filter the resulting list by a specific city or region.",
                                                                         "type": "text/plain"
                                                                     },
                                                                     "key": "location",
@@ -2302,7 +2302,7 @@
                                                                 {
                                                                     "disabled": false,
                                                                     "description": {
-                                                                        "content": "(Required) Host ID",
+                                                                        "content": "(Required) The Host ID managing these properties.",
                                                                         "type": "text/plain"
                                                                     },
                                                                     "type": "any",
@@ -2347,12 +2347,12 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "d63a307b-d46a-4f67-b4f2-803a4c9b3021",
+                                    "id": "637a13da-5eef-46c6-b472-6f4c82fa8418",
                                     "name": "Get Property Details",
                                     "request": {
                                         "name": "Get Property Details",
                                         "description": {
-                                            "content": "Get details of a single property by its ID",
+                                            "content": "Drill down into a specific property. Returns the exact title, host bindings, textual description, nightly price, and location coordinates formatted for front-end rendering.",
                                             "type": "text/plain"
                                         },
                                         "url": {
@@ -2372,7 +2372,7 @@
                                                     "key": "id",
                                                     "disabled": false,
                                                     "description": {
-                                                        "content": "(Required) Property ID",
+                                                        "content": "(Required) The exact Property ID to inspect.",
                                                         "type": "text/plain"
                                                     }
                                                 }
@@ -2390,8 +2390,8 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "746ce4c8-17ad-4503-a203-551db5cec9f8",
-                                            "name": "Successfully retrieved property",
+                                            "id": "eee6431e-7ba5-4641-baee-ca0af94a6e4e",
+                                            "name": "Full property overview returned.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -2407,7 +2407,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Property ID",
+                                                                "content": "(Required) The exact Property ID to inspect.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -2438,8 +2438,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "3d737b0f-add9-4f26-a501-523375cc12c0",
-                                            "name": "Bad Request",
+                                            "id": "83b9d42b-1a05-476b-a404-262dae32d83e",
+                                            "name": "Bad Request.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -2455,7 +2455,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Property ID",
+                                                                "content": "(Required) The exact Property ID to inspect.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -2486,8 +2486,8 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "1de7df14-805b-46fa-9786-10bc1a4838d0",
-                                            "name": "Property Not Found",
+                                            "id": "4b30c116-f0b4-46ef-86ff-815767efbb5f",
+                                            "name": "Property Not Found - the listing may have been deactivated.",
                                             "originalRequest": {
                                                 "url": {
                                                     "path": [
@@ -2503,7 +2503,7 @@
                                                         {
                                                             "disabled": false,
                                                             "description": {
-                                                                "content": "(Required) Property ID",
+                                                                "content": "(Required) The exact Property ID to inspect.",
                                                                 "type": "text/plain"
                                                             },
                                                             "type": "any",
@@ -2554,11 +2554,11 @@
         }
     ],
     "info": {
-        "_postman_id": "0c2da88c-ff9a-4698-8a80-c775aa96aa7b",
-        "name": "Airbnb Clone API",
+        "_postman_id": "12582f89-be92-4736-9e5d-0ad1aa617da4",
+        "name": "HavenStay - Hotel & Room Booking API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
-            "content": "Backend REST API for a Hotel & Room Booking Service\n\nContact Support:\n Name: API Support\n Email: support@airbnbclone.local",
+            "content": "Welcome to the HavenStay Backend API documentation! 🚀\n\nHavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.\n\n### Key Features:\n- **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.\n- **👩‍💼 Host & Guest Profiles**: Independent onboarding and profile management domains.\n- **📅 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**: Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.\n\nContact Support:\n Name: HavenStay Platform Support\n Email: api-support@havenstay.local",
             "type": "text/plain"
         }
     }

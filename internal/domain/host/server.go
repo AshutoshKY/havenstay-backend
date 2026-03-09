@@ -47,15 +47,16 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 	}
 }
 
-// @Summary Create a Host
-// @Description Register a new host on the platform
-// @Tags hosts
+// @Summary Register a new Host
+// @Description Creates a new Host profile on the platform. Hosts are independent users capable of listing and managing multiple Properties.
+// @Description Note: A newly created host is automatically marked as `is_verified: false` pending administrator approval.
+// @Tags Hosts
 // @Accept json
 // @Produce json
-// @Param request body pb.CreateHostRequest true "Host creation payload"
-// @Success 201 {object} pb.HostResponse "Successfully created host"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 500 {object} string "Internal Server Error"
+// @Param request body pb.CreateHostRequest true "Payload containing the Host's basic contact and profile information (Name, Email, Phone, Location)."
+// @Success 201 {object} pb.HostResponse "Host successfully registered and assigned a unique ID."
+// @Failure 400 {object} string "Validation Error - Invalid email format or missing required fields."
+// @Failure 500 {object} string "Internal Server Error - Database connection failure."
 // @Router /v1/hosts [post]
 func (h *HTTPServer) createHost(c *gin.Context) {
 	var req pb.CreateHostRequest
@@ -73,14 +74,15 @@ func (h *HTTPServer) createHost(c *gin.Context) {
 	c.JSON(http.StatusCreated, resp)
 }
 
-// @Summary Get a Host
-// @Description Get details of a single host by ID
-// @Tags hosts
+// @Summary Retrieve Host details
+// @Description Fetches the complete public profile of a Host by their unique identifier natively from the core system.
+// @Description Use this endpoint to display a Host's verification status, contact info, and join date on their public landing page.
+// @Tags Hosts
 // @Produce json
-// @Param id path int true "Host ID"
-// @Success 200 {object} pb.HostResponse "Successfully retrieved host"
-// @Failure 400 {object} string "Bad Request"
-// @Failure 404 {object} string "Host Not Found"
+// @Param id path int true "The unique numeric ID of the Host to retrieve."
+// @Success 200 {object} pb.HostResponse "The requested Host details were found and returned successfully."
+// @Failure 400 {object} string "Bad Request - The provided ID was not a valid integer."
+// @Failure 404 {object} string "Not Found - No Host exists with the provided ID."
 // @Router /v1/hosts/{id} [get]
 func (h *HTTPServer) getHost(c *gin.Context) {
 	idStr := c.Param("id")
