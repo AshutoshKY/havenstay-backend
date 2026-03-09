@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	pb "github.com/user/airbnb-test/api/proto/v1"
+	"github.com/user/airbnb-test/internal/pkg/response"
 )
 
 // GRPCServer implements pb.PropertyServiceServer
@@ -60,12 +61,12 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 // @Tags Properties
 // @Produce json
 // @Success 200 {object} pb.ListPropertiesResponse "A comprehensive array of all available properties."
-// @Failure 500 {object} string "Internal Server Error while querying the database."
+// @Failure 500 {object} response.HTTPError "Internal Server Error while querying the database."
 // @Router /v1/properties [get]
 func (h *HTTPServer) listProperties(c *gin.Context) {
 	resp, err := h.svc.ListProperties(c.Request.Context(), &pb.ListPropertiesRequest{})
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.HTTPError{Code: http.StatusInternalServerError, Message: "Internal Server Error", Details: err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, resp)
@@ -77,8 +78,8 @@ func (h *HTTPServer) listProperties(c *gin.Context) {
 // @Produce json
 // @Param id path int true "The exact Property ID to inspect."
 // @Success 200 {object} pb.PropertyResponse "Full property overview returned."
-// @Failure 400 {object} string "Bad Request."
-// @Failure 404 {object} string "Property Not Found - the listing may have been deactivated."
+// @Failure 400 {object} response.HTTPError "Bad Request."
+// @Failure 404 {object} response.HTTPError "Property Not Found - the listing may have been deactivated."
 // @Router /v1/properties/{id} [get]
 func (h *HTTPServer) getProperty(c *gin.Context) {
 	idStr := c.Param("id")
@@ -104,19 +105,19 @@ func (h *HTTPServer) getProperty(c *gin.Context) {
 // @Produce json
 // @Param request body pb.CreatePropertyRequest true "The core details of the listing: Name, Description, Location String, and Nightly Price (Float)."
 // @Success 201 {object} pb.PropertyResponse "Property was published and is now live on the index."
-// @Failure 400 {object} string "Validation Bad Request - Usually missing Host ID or malformed price."
-// @Failure 500 {object} string "Internal Server Error."
+// @Failure 400 {object} response.HTTPError "Validation Bad Request - Usually missing Host ID or malformed price."
+// @Failure 500 {object} response.HTTPError "Internal Server Error."
 // @Router /v1/properties [post]
 func (h *HTTPServer) createProperty(c *gin.Context) {
 	var req pb.CreatePropertyRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Validation Error", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.CreateProperty(c.Request.Context(), &req)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.HTTPError{Code: http.StatusInternalServerError, Message: "Internal Server Error", Details: err.Error()})
 		return
 	}
 	c.JSON(http.StatusCreated, resp)
@@ -130,8 +131,8 @@ func (h *HTTPServer) createProperty(c *gin.Context) {
 // @Param hostId path int true "The Host ID managing these properties."
 // @Param location query string false "Optional string to filter the resulting list by a specific city or region."
 // @Success 200 {object} pb.ListPropertiesResponse "A list of properties bound to the specified host."
-// @Failure 400 {object} string "Bad Request."
-// @Failure 500 {object} string "Internal Server Error."
+// @Failure 400 {object} response.HTTPError "Bad Request."
+// @Failure 500 {object} response.HTTPError "Internal Server Error."
 // @Router /v1/properties/host/{hostId} [get]
 func (h *HTTPServer) listPropertiesByHost(c *gin.Context) {
 	hostIdStr := c.Param("hostId")

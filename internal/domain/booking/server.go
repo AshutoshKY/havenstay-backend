@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	pb "github.com/user/airbnb-test/api/proto/v1"
+	"github.com/user/airbnb-test/internal/pkg/response"
 )
 
 type GRPCServer struct {
@@ -55,19 +56,19 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 // @Produce json
 // @Param request body pb.CreateBookingRequest true "Payload specifying the Guest ID, Property ID, Start Date, End Date, and calculated total price."
 // @Success 201 {object} pb.BookingResponse "Reservation successfully created and locked."
-// @Failure 400 {object} string "Validation Bad Request - Overlapping dates or missing required fields."
-// @Failure 500 {object} string "Internal Server Error."
+// @Failure 400 {object} response.HTTPError "Validation Bad Request - Overlapping dates or missing required fields."
+// @Failure 500 {object} response.HTTPError "Internal Server Error."
 // @Router /v1/bookings [post]
 func (h *HTTPServer) createBooking(c *gin.Context) {
 	var req pb.CreateBookingRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Validation Bad Request", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.CreateBooking(c.Request.Context(), &req)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.HTTPError{Code: http.StatusInternalServerError, Message: "Internal Server Error", Details: err.Error()})
 		return
 	}
 	c.JSON(http.StatusCreated, resp)
@@ -80,20 +81,20 @@ func (h *HTTPServer) createBooking(c *gin.Context) {
 // @Produce json
 // @Param id path int true "The numeric Reservation/Booking ID."
 // @Success 200 {object} pb.BookingResponse "The retrieved itinerary and invoice details."
-// @Failure 400 {object} string "Bad Request - Invalid ID format."
-// @Failure 404 {object} string "Not Found - The reservation does not exist."
+// @Failure 400 {object} response.HTTPError "Bad Request - Invalid ID format."
+// @Failure 404 {object} response.HTTPError "Not Found - The reservation does not exist."
 // @Router /v1/bookings/{id} [get]
 func (h *HTTPServer) getBooking(c *gin.Context) {
 	idStr := c.Param("id")
 	id, err := strconv.ParseInt(idStr, 10, 64)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid booking ID"})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Invalid booking ID format", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.GetBooking(c.Request.Context(), &pb.GetBookingRequest{BookingId: id})
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		c.JSON(http.StatusNotFound, response.HTTPError{Code: http.StatusNotFound, Message: "Booking Not Found", Details: err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, resp)
@@ -105,21 +106,21 @@ func (h *HTTPServer) getBooking(c *gin.Context) {
 // @Produce json
 // @Param guestId query int true "The ID of the Guest requesting their itinerary."
 // @Success 200 {object} pb.ListBookingsResponse "An array of all historical and upcoming bookings for the Guest."
-// @Failure 400 {object} string "Bad Request - Missing or invalid guest ID."
-// @Failure 500 {object} string "Internal Server Error."
+// @Failure 400 {object} response.HTTPError "Bad Request - Missing or invalid guest ID."
+// @Failure 500 {object} response.HTTPError "Internal Server Error."
 // @Router /v1/bookings [get]
 func (h *HTTPServer) listGuestBookings(c *gin.Context) {
 	guestIdStr := c.Query("guestId")
 	guestId, err := strconv.ParseInt(guestIdStr, 10, 64)
 	if err != nil {
 		// Could also list ALL bookings if no guestId is provided, based on requirement: "All the bookings user has done"
-		c.JSON(http.StatusBadRequest, gin.H{"error": "guestId query parameter is required"})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Missing or Invalid guestId query parameter", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.ListGuestBookings(c.Request.Context(), &pb.ListGuestBookingsRequest{GuestId: guestId})
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.HTTPError{Code: http.StatusInternalServerError, Message: "Internal Server Error", Details: err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, resp)

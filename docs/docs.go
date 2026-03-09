@@ -53,13 +53,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request - Missing or invalid guest ID.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -97,13 +97,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Validation Bad Request - Overlapping dates or missing required fields.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -138,13 +138,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request - Invalid ID format.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "404": {
                         "description": "Not Found - The reservation does not exist.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -184,13 +184,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Validation Error - Invalid payload format or duplicate email.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -225,13 +225,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request - The provided ID was invalid.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "404": {
                         "description": "Not Found - No Guest exists with the provided ID.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -271,13 +271,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Validation Error - Invalid email format or missing required fields.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error - Database connection failure.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -312,13 +312,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request - The provided ID was not a valid integer.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "404": {
                         "description": "Not Found - No Host exists with the provided ID.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -353,13 +353,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -397,13 +397,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request - Duplicate bookmark or invalid identifiers.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -429,7 +429,7 @@ const docTemplate = `{
                     "500": {
                         "description": "Internal Server Error while querying the database.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -467,13 +467,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Validation Bad Request - Usually missing Host ID or malformed price.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -514,13 +514,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -555,13 +555,13 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     },
                     "404": {
                         "description": "Property Not Found - the listing may have been deactivated.",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/github_com_user_airbnb-test_internal_pkg_response.HTTPError"
                         }
                     }
                 }
@@ -860,6 +860,23 @@ const docTemplate = `{
             "properties": {
                 "item": {
                     "$ref": "#/definitions/github_com_user_airbnb-test_api_proto_v1.WishlistItem"
+                }
+            }
+        },
+        "github_com_user_airbnb-test_internal_pkg_response.HTTPError": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 400
+                },
+                "details": {
+                    "type": "string",
+                    "example": "missing required field 'guestId'"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "status bad request"
                 }
             }
         },

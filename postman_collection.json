@@ -9,7 +9,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "58d5dbb4-9d15-45c4-b233-92a8e184ab53",
+                            "id": "a0e439f6-3002-44eb-a41e-d9c890bfe8b4",
                             "name": "Get a Guest's Booking History",
                             "request": {
                                 "name": "Get a Guest's Booking History",
@@ -50,7 +50,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "9d949a69-c2ef-41b6-8c7b-237ab4903042",
+                                    "id": "7bc057b9-a4be-4b81-891b-c235004126a5",
                                     "name": "An array of all historical and upcoming bookings for the Guest.",
                                     "originalRequest": {
                                         "url": {
@@ -96,7 +96,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "3a769beb-2c6a-48db-8d5b-49e5a1f50b02",
+                                    "id": "acbe2f89-1e20-4ff0-8c2e-8efe2dea1115",
                                     "name": "Bad Request - Missing or invalid guest ID.",
                                     "originalRequest": {
                                         "url": {
@@ -137,12 +137,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "f932661d-b715-4d89-9523-6d43b2bf152d",
+                                    "id": "174c845e-a740-40e2-a0a0-324ba85f8412",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -183,7 +183,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -194,7 +194,7 @@
                             }
                         },
                         {
-                            "id": "55577e6a-db53-4ba2-a4a1-ceef818c4a56",
+                            "id": "16d16984-dbf5-4471-9a23-35dd163aa386",
                             "name": "Create a Booking Reservation",
                             "request": {
                                 "name": "Create a Booking Reservation",
@@ -238,7 +238,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "0e6cfd79-3f55-4b33-aca7-d326b427af9f",
+                                    "id": "d1705ead-6f10-413c-a995-3e452275521d",
                                     "name": "Reservation successfully created and locked.",
                                     "originalRequest": {
                                         "url": {
@@ -287,7 +287,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "6791e15d-43ea-4459-991b-d096bcd82102",
+                                    "id": "8087762f-04c0-4d75-8f6c-9fb0cadfa0c9",
                                     "name": "Validation Bad Request - Overlapping dates or missing required fields.",
                                     "originalRequest": {
                                         "url": {
@@ -331,12 +331,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "65019d22-947f-49f0-a693-91871aa305c2",
+                                    "id": "645af069-706c-48e6-ac91-c8ca87bcec69",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -380,7 +380,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -395,7 +395,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "758b2b7a-b8e3-417f-b963-77e45ee9a807",
+                                    "id": "55d582f8-0041-4066-9aee-6b9340ad11cf",
                                     "name": "Retrieve Booking Invoice",
                                     "request": {
                                         "name": "Retrieve Booking Invoice",
@@ -438,7 +438,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "50dc69c7-76ac-43b5-a60a-7121526aa051",
+                                            "id": "34fdc6a2-8566-4888-8f97-afbc494f7719",
                                             "name": "The retrieved itinerary and invoice details.",
                                             "originalRequest": {
                                                 "url": {
@@ -486,7 +486,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "6adb2d50-3c18-46e7-8625-b550d1b60e28",
+                                            "id": "7b175780-a5ca-414d-9f8a-6ad3947d7294",
                                             "name": "Bad Request - Invalid ID format.",
                                             "originalRequest": {
                                                 "url": {
@@ -529,12 +529,12 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "bf0d27bd-7d48-4cfd-bfda-1ce0a6d6d972",
+                                            "id": "c6095a9f-4f37-4d28-95f2-7b7ca8913f09",
                                             "name": "Not Found - The reservation does not exist.",
                                             "originalRequest": {
                                                 "url": {
@@ -577,7 +577,7 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         }
@@ -596,7 +596,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "ec15d9a4-1a09-4b6b-8a6f-818f02de154d",
+                            "id": "1a516937-788d-4602-91cd-2374de3af04d",
                             "name": "Register a new Guest",
                             "request": {
                                 "name": "Register a new Guest",
@@ -640,7 +640,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "fb90b5c0-98bf-453a-97f6-37dde3786370",
+                                    "id": "316d110a-b523-4e0b-ab97-6acbbda961f3",
                                     "name": "Guest successfully registered and assigned a unique ID.",
                                     "originalRequest": {
                                         "url": {
@@ -689,7 +689,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "c6657ebc-f649-4f48-a82d-5a58bf91c971",
+                                    "id": "e00a1764-890d-4f79-b8b3-1656ec3a5a5c",
                                     "name": "Validation Error - Invalid payload format or duplicate email.",
                                     "originalRequest": {
                                         "url": {
@@ -733,12 +733,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "6e7a61f4-235d-436d-8967-c9c775676c8e",
+                                    "id": "999c713d-82a7-4b64-8245-b4f71e630e93",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -782,7 +782,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -797,7 +797,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "d6c9b402-966a-4698-a02c-6aaa5891e1ca",
+                                    "id": "fa163e2d-c921-4dc6-b0f5-92dd7568e95c",
                                     "name": "Retrieve Guest details",
                                     "request": {
                                         "name": "Retrieve Guest details",
@@ -840,7 +840,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "375bfa2c-bf45-41ef-a1aa-ad46165b8c77",
+                                            "id": "e61939d2-b4d6-4893-be3f-d1973f85d5d1",
                                             "name": "The requested Guest details.",
                                             "originalRequest": {
                                                 "url": {
@@ -888,7 +888,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "490594da-d00f-4357-9453-25c14707536e",
+                                            "id": "7212407e-6590-4b1d-a8c3-e5b08bb288fe",
                                             "name": "Bad Request - The provided ID was invalid.",
                                             "originalRequest": {
                                                 "url": {
@@ -931,12 +931,12 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "3d52db19-8b4d-4947-8c8e-3212d2ae8635",
+                                            "id": "dcc4f993-ce1f-4bfc-83d7-b23393d62f77",
                                             "name": "Not Found - No Guest exists with the provided ID.",
                                             "originalRequest": {
                                                 "url": {
@@ -979,7 +979,7 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         }
@@ -998,7 +998,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "0fe4f064-dd23-4242-b78c-57953816bb1d",
+                            "id": "26f7c7d6-0627-4092-a213-915a7de19730",
                             "name": "Register a new Host",
                             "request": {
                                 "name": "Register a new Host",
@@ -1042,7 +1042,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "05fef41f-dcc8-4151-b163-29bbefaef595",
+                                    "id": "47dc7ff7-0f9d-4124-86ea-6dd95bbcd76c",
                                     "name": "Host successfully registered and assigned a unique ID.",
                                     "originalRequest": {
                                         "url": {
@@ -1091,7 +1091,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "2a653c30-9353-4afe-9200-76981e8619bc",
+                                    "id": "40f878a5-7d25-4168-af3f-20df3f01e65f",
                                     "name": "Validation Error - Invalid email format or missing required fields.",
                                     "originalRequest": {
                                         "url": {
@@ -1135,12 +1135,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "bbaaa025-d5bd-46fb-9d3c-ebb4239ea523",
+                                    "id": "74193577-72cb-4257-88e7-da0420d403f7",
                                     "name": "Internal Server Error - Database connection failure.",
                                     "originalRequest": {
                                         "url": {
@@ -1184,7 +1184,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -1199,7 +1199,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "9d9a7a03-e36b-41cc-9bbf-3a8184597e8e",
+                                    "id": "2740d29b-58b0-4bf4-8cb0-e822e6498da2",
                                     "name": "Retrieve Host details",
                                     "request": {
                                         "name": "Retrieve Host details",
@@ -1242,7 +1242,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "0701deb6-8770-4068-90f4-1d7fdecf6862",
+                                            "id": "436d287c-5a9c-4f9e-94b2-307761954348",
                                             "name": "The requested Host details were found and returned successfully.",
                                             "originalRequest": {
                                                 "url": {
@@ -1290,7 +1290,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "9d9e858c-bafe-4fd9-976f-99664027b568",
+                                            "id": "df341daa-e284-49ae-9d41-d6e0ca9ca6b8",
                                             "name": "Bad Request - The provided ID was not a valid integer.",
                                             "originalRequest": {
                                                 "url": {
@@ -1333,12 +1333,12 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "c22aea03-c839-49ec-9af2-084627e37745",
+                                            "id": "6e04cd48-d939-4ac5-a5b3-7211e4d3b687",
                                             "name": "Not Found - No Host exists with the provided ID.",
                                             "originalRequest": {
                                                 "url": {
@@ -1381,7 +1381,7 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         }
@@ -1400,7 +1400,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "fa870918-1f00-49e8-9197-4632f893648d",
+                            "id": "62bdad81-ff69-44f1-9254-2be9a455396f",
                             "name": "View Guest Wishlist",
                             "request": {
                                 "name": "View Guest Wishlist",
@@ -1441,7 +1441,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "bb59dbab-5990-412a-801a-77dc30d8323e",
+                                    "id": "d45358d9-c5a6-4746-b398-b6897930419e",
                                     "name": "An array wrapping the nested Property details saved by the user.",
                                     "originalRequest": {
                                         "url": {
@@ -1487,7 +1487,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "a8353d2e-ee0e-41fa-921d-0f11f36e1e52",
+                                    "id": "c0853b85-15da-4aaf-8334-801af10bd574",
                                     "name": "Bad Request.",
                                     "originalRequest": {
                                         "url": {
@@ -1528,12 +1528,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "4faed177-40c8-4da3-adb8-5e7dfda5483b",
+                                    "id": "02961615-cb97-4e79-96c6-bab627611f9e",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -1574,7 +1574,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -1585,7 +1585,7 @@
                             }
                         },
                         {
-                            "id": "99c488f8-1520-4628-acbc-9cbc12f22d05",
+                            "id": "867ab034-ab5a-45cb-b6a6-39f86a6f39a2",
                             "name": "Save Property to Wishlist",
                             "request": {
                                 "name": "Save Property to Wishlist",
@@ -1629,7 +1629,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "caa18383-05a4-4a95-821c-fe408df0058f",
+                                    "id": "30901478-86d9-4985-bb4f-0fe8346b45ee",
                                     "name": "A confirmation object encapsulating the newly bookmarked item constraint.",
                                     "originalRequest": {
                                         "url": {
@@ -1678,7 +1678,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "8f9659e5-0551-44ed-b0c3-c6e6c8f0e942",
+                                    "id": "915e83a9-eea3-4091-91ed-96ec50d774d8",
                                     "name": "Bad Request - Duplicate bookmark or invalid identifiers.",
                                     "originalRequest": {
                                         "url": {
@@ -1722,12 +1722,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "564d53ff-c312-4b5a-b1e9-926860ceb727",
+                                    "id": "5c50f517-c770-44c1-bc76-0369e7e09d49",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -1771,7 +1771,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -1788,7 +1788,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "7b14ec18-c4b2-4053-aeb8-e5ac5663c464",
+                            "id": "5d4ff5e4-588b-448f-bac0-a430eea3fe84",
                             "name": "Browse all Properties",
                             "request": {
                                 "name": "Browse all Properties",
@@ -1819,7 +1819,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "dfe7d6a0-2f9a-44c1-a547-bebce8792882",
+                                    "id": "248b503d-b641-4f02-bfb6-bc811dd353e9",
                                     "name": "A comprehensive array of all available properties.",
                                     "originalRequest": {
                                         "url": {
@@ -1855,7 +1855,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "114bede9-80e2-4aaf-b287-7bdfb6faa045",
+                                    "id": "0f54a85a-a82a-4931-81cc-c60b99d6d298",
                                     "name": "Internal Server Error while querying the database.",
                                     "originalRequest": {
                                         "url": {
@@ -1886,7 +1886,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -1897,7 +1897,7 @@
                             }
                         },
                         {
-                            "id": "3f28e6cd-a337-45a9-a7a6-b6a941d90b39",
+                            "id": "d2840618-523b-4972-9a53-a4a108c97487",
                             "name": "List a new Property",
                             "request": {
                                 "name": "List a new Property",
@@ -1941,7 +1941,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "4aae054c-7323-4475-a15a-64a36b12bb0e",
+                                    "id": "77fc8467-cf06-426b-b84d-33a1c2768a4c",
                                     "name": "Property was published and is now live on the index.",
                                     "originalRequest": {
                                         "url": {
@@ -1990,7 +1990,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "5cd64461-17f8-45ef-a481-b08a3684a526",
+                                    "id": "7f643585-7461-41d5-baed-e9af3c999bfe",
                                     "name": "Validation Bad Request - Usually missing Host ID or malformed price.",
                                     "originalRequest": {
                                         "url": {
@@ -2034,12 +2034,12 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "95b50aa9-ac01-48a7-9bfa-06bed56f8319",
+                                    "id": "6e9e8d92-0c36-4cfa-9dfe-369dbcb092c1",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -2083,7 +2083,7 @@
                                             "value": "application/json"
                                         }
                                     ],
-                                    "body": "<string>",
+                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                     "cookie": [],
                                     "_postman_previewlanguage": "json"
                                 }
@@ -2102,7 +2102,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "57f2f588-ffa0-4ab6-967b-d7aeebea0c0f",
+                                            "id": "69125890-f020-4a33-b2b9-1e3b59da87e5",
                                             "name": "Host's Dashboard Properties",
                                             "request": {
                                                 "name": "Host's Dashboard Properties",
@@ -2156,7 +2156,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "8d5a6f0e-1c9b-4f86-8c42-57cd11eec000",
+                                                    "id": "18ef00f0-373f-43a4-801c-98ade0a9b44a",
                                                     "name": "A list of properties bound to the specified host.",
                                                     "originalRequest": {
                                                         "url": {
@@ -2215,7 +2215,7 @@
                                                     "_postman_previewlanguage": "json"
                                                 },
                                                 {
-                                                    "id": "38901c62-56b0-4320-8d76-f63478babe53",
+                                                    "id": "20ca3bc8-dac2-4e20-9b92-5f7f387ddcb5",
                                                     "name": "Bad Request.",
                                                     "originalRequest": {
                                                         "url": {
@@ -2269,12 +2269,12 @@
                                                             "value": "application/json"
                                                         }
                                                     ],
-                                                    "body": "<string>",
+                                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "json"
                                                 },
                                                 {
-                                                    "id": "619fdc4d-c979-41d8-af58-0fc5d766cec8",
+                                                    "id": "9bcb4be5-3e19-49bb-80f4-d791aa45f861",
                                                     "name": "Internal Server Error.",
                                                     "originalRequest": {
                                                         "url": {
@@ -2328,7 +2328,7 @@
                                                             "value": "application/json"
                                                         }
                                                     ],
-                                                    "body": "<string>",
+                                                    "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                                     "cookie": [],
                                                     "_postman_previewlanguage": "json"
                                                 }
@@ -2347,7 +2347,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "637a13da-5eef-46c6-b472-6f4c82fa8418",
+                                    "id": "fe6e6882-552a-4e94-aafd-421c120e27a3",
                                     "name": "Get Property Details",
                                     "request": {
                                         "name": "Get Property Details",
@@ -2390,7 +2390,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "eee6431e-7ba5-4641-baee-ca0af94a6e4e",
+                                            "id": "7c91b5e8-0ec2-4fae-b5be-0b93cdaaffb7",
                                             "name": "Full property overview returned.",
                                             "originalRequest": {
                                                 "url": {
@@ -2438,7 +2438,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "83b9d42b-1a05-476b-a404-262dae32d83e",
+                                            "id": "a7be3de2-b359-41b2-b744-68ecb8660ad1",
                                             "name": "Bad Request.",
                                             "originalRequest": {
                                                 "url": {
@@ -2481,12 +2481,12 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "4b30c116-f0b4-46ef-86ff-815767efbb5f",
+                                            "id": "33cb03d0-c9ef-4062-a997-19c3f4489841",
                                             "name": "Property Not Found - the listing may have been deactivated.",
                                             "originalRequest": {
                                                 "url": {
@@ -2529,7 +2529,7 @@
                                                     "value": "application/json"
                                                 }
                                             ],
-                                            "body": "<string>",
+                                            "body": "{\n  \"code\": \"<integer>\",\n  \"details\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                                             "cookie": [],
                                             "_postman_previewlanguage": "json"
                                         }
@@ -2554,7 +2554,7 @@
         }
     ],
     "info": {
-        "_postman_id": "12582f89-be92-4736-9e5d-0ad1aa617da4",
+        "_postman_id": "982f21c5-bed0-4421-8391-d63c8c17a251",
         "name": "HavenStay - Hotel & Room Booking API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {

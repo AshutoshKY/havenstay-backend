@@ -54,24 +54,21 @@ graph TD
 - Go 1.21+
 - `make`
 
-### 2. Boot Database & Seed Data
-A script is provided to automatically create tables and populate them with dummy users, properties, and bookings.
+### 2. Boot Database & Backend
+The application runs entirely within Docker using `docker-compose`. This spins up the MySQL database and the Go application.
 
 ```bash
-# 1. Start the MySQL container in the background
-docker-compose up -d
+# Build the application and start all services in the background
+docker-compose up -d --build
 
-# 2. Run the migration and seed script
-go run cmd/seed/main.go
+# View logs to ensure both services started successfully
+docker-compose logs -f
 ```
 
-### 3. Build & Run the Backend
+### 3. Seed Data
+Once the database is up, you can populate it with dummy data (users, properties, bookings) by running the seeder script locally:
 ```bash
-# Optional: compile the protobufs if you edit api/proto/v1/
-make proto
-
-# Boot the API server (Runs HTTP on :8080 and gRPC on :50051)
-go run cmd/server/main.go
+go run cmd/seed/main.go
 ```
 
 ## API Documentation

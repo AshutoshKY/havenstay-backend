@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	pb "github.com/user/airbnb-test/api/proto/v1"
+	"github.com/user/airbnb-test/internal/pkg/response"
 )
 
 type GRPCServer struct {
@@ -50,19 +51,19 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 // @Produce json
 // @Param request body pb.CreateGuestRequest true "Payload containing the Guest's personal details (Name, Email, Phone)."
 // @Success 201 {object} pb.GuestResponse "Guest successfully registered and assigned a unique ID."
-// @Failure 400 {object} string "Validation Error - Invalid payload format or duplicate email."
-// @Failure 500 {object} string "Internal Server Error."
+// @Failure 400 {object} response.HTTPError "Validation Error - Invalid payload format or duplicate email."
+// @Failure 500 {object} response.HTTPError "Internal Server Error."
 // @Router /v1/guests [post]
 func (h *HTTPServer) createGuest(c *gin.Context) {
 	var req pb.CreateGuestRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Validation Error", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.CreateGuest(c.Request.Context(), &req)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.HTTPError{Code: http.StatusInternalServerError, Message: "Internal Server Error", Details: err.Error()})
 		return
 	}
 	c.JSON(http.StatusCreated, resp)
@@ -74,8 +75,8 @@ func (h *HTTPServer) createGuest(c *gin.Context) {
 // @Produce json
 // @Param id path int true "The unique numeric ID of the Guest to retrieve."
 // @Success 200 {object} pb.GuestResponse "The requested Guest details."
-// @Failure 400 {object} string "Bad Request - The provided ID was invalid."
-// @Failure 404 {object} string "Not Found - No Guest exists with the provided ID."
+// @Failure 400 {object} response.HTTPError "Bad Request - The provided ID was invalid."
+// @Failure 404 {object} response.HTTPError "Not Found - No Guest exists with the provided ID."
 // @Router /v1/guests/{id} [get]
 func (h *HTTPServer) getGuest(c *gin.Context) {
 	idStr := c.Param("id")

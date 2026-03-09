@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	pb "github.com/user/airbnb-test/api/proto/v1"
+	"github.com/user/airbnb-test/internal/pkg/response"
 )
 
 // GRPCServer implements the gRPC HostServiceServer interface
@@ -55,19 +56,19 @@ func (h *HTTPServer) RegisterRoutes(router *gin.RouterGroup) {
 // @Produce json
 // @Param request body pb.CreateHostRequest true "Payload containing the Host's basic contact and profile information (Name, Email, Phone, Location)."
 // @Success 201 {object} pb.HostResponse "Host successfully registered and assigned a unique ID."
-// @Failure 400 {object} string "Validation Error - Invalid email format or missing required fields."
-// @Failure 500 {object} string "Internal Server Error - Database connection failure."
+// @Failure 400 {object} response.HTTPError "Validation Error - Invalid email format or missing required fields."
+// @Failure 500 {object} response.HTTPError "Internal Server Error - Database connection failure."
 // @Router /v1/hosts [post]
 func (h *HTTPServer) createHost(c *gin.Context) {
 	var req pb.CreateHostRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Validation Error", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.CreateHost(c.Request.Context(), &req)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.HTTPError{Code: http.StatusInternalServerError, Message: "Internal Server Error", Details: err.Error()})
 		return
 	}
 
@@ -81,20 +82,20 @@ func (h *HTTPServer) createHost(c *gin.Context) {
 // @Produce json
 // @Param id path int true "The unique numeric ID of the Host to retrieve."
 // @Success 200 {object} pb.HostResponse "The requested Host details were found and returned successfully."
-// @Failure 400 {object} string "Bad Request - The provided ID was not a valid integer."
-// @Failure 404 {object} string "Not Found - No Host exists with the provided ID."
+// @Failure 400 {object} response.HTTPError "Bad Request - The provided ID was not a valid integer."
+// @Failure 404 {object} response.HTTPError "Not Found - No Host exists with the provided ID."
 // @Router /v1/hosts/{id} [get]
 func (h *HTTPServer) getHost(c *gin.Context) {
 	idStr := c.Param("id")
 	id, err := strconv.ParseInt(idStr, 10, 64)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid host ID"})
+		c.JSON(http.StatusBadRequest, response.HTTPError{Code: http.StatusBadRequest, Message: "Invalid Host ID format", Details: err.Error()})
 		return
 	}
 
 	resp, err := h.svc.GetHost(c.Request.Context(), &pb.GetHostRequest{Id: id})
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		c.JSON(http.StatusNotFound, response.HTTPError{Code: http.StatusNotFound, Message: "Host Not Found", Details: err.Error()})
 		return
 	}
 
