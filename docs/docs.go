@@ -903,7 +903,7 @@ var SwaggerInfo = &swag.Spec{
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "HavenStay - Hotel & Room Booking API",
-	Description:      "Welcome to the HavenStay Backend API documentation! 🚀\n\nHavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.\n\n### Key Features:\n- **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.\n- **👩\u200d💼 Host & Guest Profiles**: Independent onboarding and profile management domains.\n- **📅 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**: Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.",
+	Description:      "Welcome to the HavenStay Backend API documentation! 🚀\n\nHavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.\n\n### Key Features:\n- **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.\n- **👩\u200d💼 Host & Guest Profiles**: Independent onboarding and profile management domains.\n- **📅 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**: Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.\n\n📥 **[Download Postman Collection](https://raw.githubusercontent.com/AshutoshKY/havenstay-backend/master/postman_collection.json)**",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

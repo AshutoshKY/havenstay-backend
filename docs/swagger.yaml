@@ -234,7 +234,7 @@ info:
     Host & Guest Profiles**: Independent onboarding and profile management domains.\n-
     **\U0001F4C5 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**:
     Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin
-    (REST), gRPC, Protobufs, MySQL 8, GORM."
+    (REST), gRPC, Protobufs, MySQL 8, GORM.\n\n\U0001F4E5 **[Download Postman Collection](https://raw.githubusercontent.com/AshutoshKY/havenstay-backend/master/postman_collection.json)**"
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT

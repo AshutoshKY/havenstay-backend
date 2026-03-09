@@ -31,6 +31,8 @@ import (
 // @description - **❤️ Wishlists**: Guests can curate lists of favorite properties.
 // @description
 // @description **Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.
+// @description
+// @description 📥 **[Download Postman Collection](https://raw.githubusercontent.com/AshutoshKY/havenstay-backend/master/postman_collection.json)**
 // @termsOfService https://havenstay.localhost/terms
 
 // @contact.name HavenStay Platform Support

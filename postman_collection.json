@@ -9,7 +9,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "a0e439f6-3002-44eb-a41e-d9c890bfe8b4",
+                            "id": "4aede9b9-ae8a-4f83-8a6a-074d8e07e042",
                             "name": "Get a Guest's Booking History",
                             "request": {
                                 "name": "Get a Guest's Booking History",
@@ -50,7 +50,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "7bc057b9-a4be-4b81-891b-c235004126a5",
+                                    "id": "8d068d53-84ce-4041-80de-aaf75f78b438",
                                     "name": "An array of all historical and upcoming bookings for the Guest.",
                                     "originalRequest": {
                                         "url": {
@@ -96,7 +96,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "acbe2f89-1e20-4ff0-8c2e-8efe2dea1115",
+                                    "id": "85b6d757-69d9-4443-9494-94c38f991f67",
                                     "name": "Bad Request - Missing or invalid guest ID.",
                                     "originalRequest": {
                                         "url": {
@@ -142,7 +142,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "174c845e-a740-40e2-a0a0-324ba85f8412",
+                                    "id": "ab603d5d-ad6e-4e0e-966b-ffeb8e37fa6f",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -194,7 +194,7 @@
                             }
                         },
                         {
-                            "id": "16d16984-dbf5-4471-9a23-35dd163aa386",
+                            "id": "010073ac-79b3-4fb4-b578-d4ebc33f6f9c",
                             "name": "Create a Booking Reservation",
                             "request": {
                                 "name": "Create a Booking Reservation",
@@ -238,7 +238,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "d1705ead-6f10-413c-a995-3e452275521d",
+                                    "id": "af1c1d06-f6f3-47d2-9960-81403b001c0f",
                                     "name": "Reservation successfully created and locked.",
                                     "originalRequest": {
                                         "url": {
@@ -287,7 +287,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "8087762f-04c0-4d75-8f6c-9fb0cadfa0c9",
+                                    "id": "bb57cb9c-92a2-4e0d-9e97-7f92ccc0d42b",
                                     "name": "Validation Bad Request - Overlapping dates or missing required fields.",
                                     "originalRequest": {
                                         "url": {
@@ -336,7 +336,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "645af069-706c-48e6-ac91-c8ca87bcec69",
+                                    "id": "45bda2fb-a867-4f1f-bd78-d9a9b47d6b98",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -395,7 +395,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "55d582f8-0041-4066-9aee-6b9340ad11cf",
+                                    "id": "fa9dfa1e-6f1f-4bc5-94b4-925ff1ffe606",
                                     "name": "Retrieve Booking Invoice",
                                     "request": {
                                         "name": "Retrieve Booking Invoice",
@@ -438,7 +438,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "34fdc6a2-8566-4888-8f97-afbc494f7719",
+                                            "id": "e8687ccf-306a-4782-a421-b8fad05d33a8",
                                             "name": "The retrieved itinerary and invoice details.",
                                             "originalRequest": {
                                                 "url": {
@@ -486,7 +486,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "7b175780-a5ca-414d-9f8a-6ad3947d7294",
+                                            "id": "7f917222-a2a3-4388-8901-5e9dbfd56b59",
                                             "name": "Bad Request - Invalid ID format.",
                                             "originalRequest": {
                                                 "url": {
@@ -534,7 +534,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "c6095a9f-4f37-4d28-95f2-7b7ca8913f09",
+                                            "id": "96c4f348-f60b-444b-bf44-563db1b6f485",
                                             "name": "Not Found - The reservation does not exist.",
                                             "originalRequest": {
                                                 "url": {
@@ -596,7 +596,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "1a516937-788d-4602-91cd-2374de3af04d",
+                            "id": "d5c67240-f278-4eda-9ee7-32ea8cdcb9aa",
                             "name": "Register a new Guest",
                             "request": {
                                 "name": "Register a new Guest",
@@ -640,7 +640,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "316d110a-b523-4e0b-ab97-6acbbda961f3",
+                                    "id": "fcbaf491-48eb-47ff-b823-91676587d94f",
                                     "name": "Guest successfully registered and assigned a unique ID.",
                                     "originalRequest": {
                                         "url": {
@@ -689,7 +689,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "e00a1764-890d-4f79-b8b3-1656ec3a5a5c",
+                                    "id": "4cb76b2a-ab9d-4efa-8409-a1791538aa93",
                                     "name": "Validation Error - Invalid payload format or duplicate email.",
                                     "originalRequest": {
                                         "url": {
@@ -738,7 +738,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "999c713d-82a7-4b64-8245-b4f71e630e93",
+                                    "id": "df9d65a5-0d2a-4b98-931f-d9be8e0f4731",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -797,7 +797,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "fa163e2d-c921-4dc6-b0f5-92dd7568e95c",
+                                    "id": "4eb353c8-18c1-4fb3-92c3-3b345bf25662",
                                     "name": "Retrieve Guest details",
                                     "request": {
                                         "name": "Retrieve Guest details",
@@ -840,7 +840,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "e61939d2-b4d6-4893-be3f-d1973f85d5d1",
+                                            "id": "ea97e40e-66ed-43a9-8135-f74ee099237f",
                                             "name": "The requested Guest details.",
                                             "originalRequest": {
                                                 "url": {
@@ -888,7 +888,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "7212407e-6590-4b1d-a8c3-e5b08bb288fe",
+                                            "id": "ed0632a6-e2ad-427c-9a4a-26c27885e91b",
                                             "name": "Bad Request - The provided ID was invalid.",
                                             "originalRequest": {
                                                 "url": {
@@ -936,7 +936,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "dcc4f993-ce1f-4bfc-83d7-b23393d62f77",
+                                            "id": "75b358ab-5700-4436-8862-e252c658ab70",
                                             "name": "Not Found - No Guest exists with the provided ID.",
                                             "originalRequest": {
                                                 "url": {
@@ -998,7 +998,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "26f7c7d6-0627-4092-a213-915a7de19730",
+                            "id": "39256e65-bc70-4ec4-97e8-ca51e0df00fd",
                             "name": "Register a new Host",
                             "request": {
                                 "name": "Register a new Host",
@@ -1042,7 +1042,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "47dc7ff7-0f9d-4124-86ea-6dd95bbcd76c",
+                                    "id": "a6ac6e64-3bdb-400b-8611-47d9cb8a76b3",
                                     "name": "Host successfully registered and assigned a unique ID.",
                                     "originalRequest": {
                                         "url": {
@@ -1091,7 +1091,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "40f878a5-7d25-4168-af3f-20df3f01e65f",
+                                    "id": "04fb3c18-1503-4ea7-bf35-58343d67757a",
                                     "name": "Validation Error - Invalid email format or missing required fields.",
                                     "originalRequest": {
                                         "url": {
@@ -1140,7 +1140,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "74193577-72cb-4257-88e7-da0420d403f7",
+                                    "id": "22a17520-f98d-4f0d-a3b5-0ab73839c6da",
                                     "name": "Internal Server Error - Database connection failure.",
                                     "originalRequest": {
                                         "url": {
@@ -1199,7 +1199,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "2740d29b-58b0-4bf4-8cb0-e822e6498da2",
+                                    "id": "3d08723d-528b-41e2-a4eb-982d1749fc33",
                                     "name": "Retrieve Host details",
                                     "request": {
                                         "name": "Retrieve Host details",
@@ -1242,7 +1242,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "436d287c-5a9c-4f9e-94b2-307761954348",
+                                            "id": "b07ae3a3-411f-4da7-888b-f49edc17e17c",
                                             "name": "The requested Host details were found and returned successfully.",
                                             "originalRequest": {
                                                 "url": {
@@ -1290,7 +1290,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "df341daa-e284-49ae-9d41-d6e0ca9ca6b8",
+                                            "id": "ae3e24a0-ebaf-4605-ad87-6f99d97080d4",
                                             "name": "Bad Request - The provided ID was not a valid integer.",
                                             "originalRequest": {
                                                 "url": {
@@ -1338,7 +1338,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "6e04cd48-d939-4ac5-a5b3-7211e4d3b687",
+                                            "id": "4fb721c2-3882-4b1f-951c-229ff9929be1",
                                             "name": "Not Found - No Host exists with the provided ID.",
                                             "originalRequest": {
                                                 "url": {
@@ -1400,7 +1400,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "62bdad81-ff69-44f1-9254-2be9a455396f",
+                            "id": "ae8aa573-e3b7-4ea3-9a31-ee766eaa91de",
                             "name": "View Guest Wishlist",
                             "request": {
                                 "name": "View Guest Wishlist",
@@ -1441,7 +1441,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "d45358d9-c5a6-4746-b398-b6897930419e",
+                                    "id": "1a7983b7-c81f-4a34-9268-e784ed6bb829",
                                     "name": "An array wrapping the nested Property details saved by the user.",
                                     "originalRequest": {
                                         "url": {
@@ -1487,7 +1487,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "c0853b85-15da-4aaf-8334-801af10bd574",
+                                    "id": "e2e01017-dc78-4366-b258-7d22aabd2fd2",
                                     "name": "Bad Request.",
                                     "originalRequest": {
                                         "url": {
@@ -1533,7 +1533,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "02961615-cb97-4e79-96c6-bab627611f9e",
+                                    "id": "2921369f-7a94-4a85-aa79-d0909bff3cb1",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -1585,7 +1585,7 @@
                             }
                         },
                         {
-                            "id": "867ab034-ab5a-45cb-b6a6-39f86a6f39a2",
+                            "id": "eaff99d4-2847-4cfe-b94f-554ed93c75ad",
                             "name": "Save Property to Wishlist",
                             "request": {
                                 "name": "Save Property to Wishlist",
@@ -1629,7 +1629,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "30901478-86d9-4985-bb4f-0fe8346b45ee",
+                                    "id": "7f082aa6-9544-42aa-8e0e-8dde0f619dfc",
                                     "name": "A confirmation object encapsulating the newly bookmarked item constraint.",
                                     "originalRequest": {
                                         "url": {
@@ -1678,7 +1678,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "915e83a9-eea3-4091-91ed-96ec50d774d8",
+                                    "id": "299bcf58-033d-4165-9bda-7e86d10cdc0a",
                                     "name": "Bad Request - Duplicate bookmark or invalid identifiers.",
                                     "originalRequest": {
                                         "url": {
@@ -1727,7 +1727,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "5c50f517-c770-44c1-bc76-0369e7e09d49",
+                                    "id": "964a063f-f32c-4aa4-af9c-e27cbfedfc55",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -1788,7 +1788,7 @@
                     "description": "",
                     "item": [
                         {
-                            "id": "5d4ff5e4-588b-448f-bac0-a430eea3fe84",
+                            "id": "238fc6e9-f695-425b-9862-5e652e8ac9a6",
                             "name": "Browse all Properties",
                             "request": {
                                 "name": "Browse all Properties",
@@ -1819,7 +1819,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "248b503d-b641-4f02-bfb6-bc811dd353e9",
+                                    "id": "e2b9ef19-d513-4bfb-b820-2116d61aeebc",
                                     "name": "A comprehensive array of all available properties.",
                                     "originalRequest": {
                                         "url": {
@@ -1855,7 +1855,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "0f54a85a-a82a-4931-81cc-c60b99d6d298",
+                                    "id": "26fc9a3a-b55a-4593-a2b0-fc7baf764025",
                                     "name": "Internal Server Error while querying the database.",
                                     "originalRequest": {
                                         "url": {
@@ -1897,7 +1897,7 @@
                             }
                         },
                         {
-                            "id": "d2840618-523b-4972-9a53-a4a108c97487",
+                            "id": "f1237381-04cc-451a-9def-f4bb56c32ac9",
                             "name": "List a new Property",
                             "request": {
                                 "name": "List a new Property",
@@ -1941,7 +1941,7 @@
                             },
                             "response": [
                                 {
-                                    "id": "77fc8467-cf06-426b-b84d-33a1c2768a4c",
+                                    "id": "42ab79ee-6350-4093-ab99-5e1899734161",
                                     "name": "Property was published and is now live on the index.",
                                     "originalRequest": {
                                         "url": {
@@ -1990,7 +1990,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "7f643585-7461-41d5-baed-e9af3c999bfe",
+                                    "id": "f4e40324-f359-4fdf-974e-916e9acb6e0a",
                                     "name": "Validation Bad Request - Usually missing Host ID or malformed price.",
                                     "originalRequest": {
                                         "url": {
@@ -2039,7 +2039,7 @@
                                     "_postman_previewlanguage": "json"
                                 },
                                 {
-                                    "id": "6e9e8d92-0c36-4cfa-9dfe-369dbcb092c1",
+                                    "id": "718f0cf3-d5c8-4e1d-bb33-7e7b0723fcb2",
                                     "name": "Internal Server Error.",
                                     "originalRequest": {
                                         "url": {
@@ -2102,7 +2102,7 @@
                                     "description": "",
                                     "item": [
                                         {
-                                            "id": "69125890-f020-4a33-b2b9-1e3b59da87e5",
+                                            "id": "03e2aefe-31c6-4d06-8f12-91619ebdc717",
                                             "name": "Host's Dashboard Properties",
                                             "request": {
                                                 "name": "Host's Dashboard Properties",
@@ -2156,7 +2156,7 @@
                                             },
                                             "response": [
                                                 {
-                                                    "id": "18ef00f0-373f-43a4-801c-98ade0a9b44a",
+                                                    "id": "df80d6b8-9deb-4dc4-b9e7-e1969f8d4248",
                                                     "name": "A list of properties bound to the specified host.",
                                                     "originalRequest": {
                                                         "url": {
@@ -2215,7 +2215,7 @@
                                                     "_postman_previewlanguage": "json"
                                                 },
                                                 {
-                                                    "id": "20ca3bc8-dac2-4e20-9b92-5f7f387ddcb5",
+                                                    "id": "e3368441-096d-4fd7-917d-e3fd2cec9109",
                                                     "name": "Bad Request.",
                                                     "originalRequest": {
                                                         "url": {
@@ -2274,7 +2274,7 @@
                                                     "_postman_previewlanguage": "json"
                                                 },
                                                 {
-                                                    "id": "9bcb4be5-3e19-49bb-80f4-d791aa45f861",
+                                                    "id": "18abb42d-912f-466d-b36f-cf15b642d4f2",
                                                     "name": "Internal Server Error.",
                                                     "originalRequest": {
                                                         "url": {
@@ -2347,7 +2347,7 @@
                             "description": "",
                             "item": [
                                 {
-                                    "id": "fe6e6882-552a-4e94-aafd-421c120e27a3",
+                                    "id": "f6b236b3-ec85-4b82-87d8-0f43d21770ad",
                                     "name": "Get Property Details",
                                     "request": {
                                         "name": "Get Property Details",
@@ -2390,7 +2390,7 @@
                                     },
                                     "response": [
                                         {
-                                            "id": "7c91b5e8-0ec2-4fae-b5be-0b93cdaaffb7",
+                                            "id": "f45f247b-0682-4e67-8a82-9162cbff1f6e",
                                             "name": "Full property overview returned.",
                                             "originalRequest": {
                                                 "url": {
@@ -2438,7 +2438,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "a7be3de2-b359-41b2-b744-68ecb8660ad1",
+                                            "id": "5e0b1896-a986-428a-9afe-d4cda5ab1f71",
                                             "name": "Bad Request.",
                                             "originalRequest": {
                                                 "url": {
@@ -2486,7 +2486,7 @@
                                             "_postman_previewlanguage": "json"
                                         },
                                         {
-                                            "id": "33cb03d0-c9ef-4062-a997-19c3f4489841",
+                                            "id": "48da8b36-ae6b-4f0c-88fb-913152d72cb7",
                                             "name": "Property Not Found - the listing may have been deactivated.",
                                             "originalRequest": {
                                                 "url": {
@@ -2554,11 +2554,11 @@
         }
     ],
     "info": {
-        "_postman_id": "982f21c5-bed0-4421-8391-d63c8c17a251",
+        "_postman_id": "eb56648b-8782-4311-9630-a6aceeafdd6c",
         "name": "HavenStay - Hotel & Room Booking API",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": {
-            "content": "Welcome to the HavenStay Backend API documentation! 🚀\n\nHavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.\n\n### Key Features:\n- **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.\n- **👩‍💼 Host & Guest Profiles**: Independent onboarding and profile management domains.\n- **📅 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**: Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.\n\nContact Support:\n Name: HavenStay Platform Support\n Email: api-support@havenstay.local",
+            "content": "Welcome to the HavenStay Backend API documentation! 🚀\n\nHavenStay is a modern, high-performance Domain-Driven Design (DDD) backend built in Go. It empowers Hosts to manage luxury properties and Guests to seamlessly book remote getaways.\n\n### Key Features:\n- **🏘️ Property Management**: Full CRUD lifecycle for short-term rentals and luxury homes.\n- **👩‍💼 Host & Guest Profiles**: Independent onboarding and profile management domains.\n- **📅 Booking Engine**: Real-time reservation creation.\n- **❤️ Wishlists**: Guests can curate lists of favorite properties.\n\n**Built With**: Go 1.21+, Gin (REST), gRPC, Protobufs, MySQL 8, GORM.\n\n📥 **[Download Postman Collection](https://raw.githubusercontent.com/AshutoshKY/havenstay-backend/master/postman_collection.json)**\n\nContact Support:\n Name: HavenStay Platform Support\n Email: api-support@havenstay.local",
             "type": "text/plain"
         }
     }

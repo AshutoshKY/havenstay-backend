@@ -87,6 +87,8 @@ Our domains expose the following REST endpoints (all mapped to internal gRPC pay
 ### Postman Support
 The root folder contains a `postman_collection.json`. You can immediately import this exact file into Postman to have all requests configured for local testing.
 
+👉 **[Download HavenStay Postman Collection](https://raw.githubusercontent.com/AshutoshKY/havenstay-backend/master/postman_collection.json)**
+
 ## Project Structure
 ```text
 airbnb-test/
