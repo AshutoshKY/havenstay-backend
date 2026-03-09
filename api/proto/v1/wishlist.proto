@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package wishlist.v1;
+option go_package = "github.com/user/airbnb-test/api/proto/v1";
+
+import "google/protobuf/timestamp.proto";
+
+service WishlistService {
+  rpc AddToWishlist(AddToWishlistRequest) returns (WishlistResponse);
+  rpc GetWishlist(GetWishlistRequest) returns (GetWishlistResponse);
+}
+
+message WishlistItem {
+  int64 id = 1;
+  int64 guest_id = 2;
+  int64 property_id = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message AddToWishlistRequest {
+  int64 guest_id = 1;
+  int64 property_id = 2;
+}
+
+message WishlistResponse {
+  WishlistItem item = 1;
+}
+
+message GetWishlistRequest {
+  int64 guest_id = 1;
+}
+
+message GetWishlistResponse {
+  repeated WishlistItem items = 1;
+}

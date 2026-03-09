@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package property.v1;
+option go_package = "github.com/user/airbnb-test/api/proto/v1";
+
+import "google/protobuf/timestamp.proto";
+
+service PropertyService {
+  rpc GetProperty(GetPropertyRequest) returns (PropertyResponse);
+  rpc ListPropertiesByHost(ListPropertiesByHostRequest) returns (ListPropertiesResponse);
+  rpc CreateProperty(CreatePropertyRequest) returns (PropertyResponse);
+  rpc ListProperties(ListPropertiesRequest) returns (ListPropertiesResponse);
+}
+
+message Property {
+  int64 id = 1;
+  int64 host_id = 2;
+  string name = 3;
+  string location = 4;
+  string description = 5;
+  int64 price = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+
+message GetPropertyRequest {
+  int64 property_id = 1;
+}
+
+message ListPropertiesByHostRequest {
+  int64 host_id = 1;
+  string location = 2; // Optional filter
+}
+
+message ListPropertiesRequest {
+  // Can add filters like location here later
+}
+
+message CreatePropertyRequest {
+  int64 host_id = 1;
+  string name = 2;
+  string location = 3;
+  string description = 4;
+  int64 price = 5;
+}
+
+message PropertyResponse {
+  Property property = 1;
+}
+
+message ListPropertiesResponse {
+  repeated Property properties = 1;
+}

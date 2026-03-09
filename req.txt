@@ -1,0 +1,86 @@
+Booking System
+
+Whitelist, Bookmarks, 
+
+1. Properties - Details, addition
+2. Booking- create, fail etc.
+3. Search - 
+
+
+Process-
+1. Create Folder structure
+2. Create APIs - GO
+3. 
+
+
+
+
+Endpoints - 
+
+1. /v1/Properties - Get
+    /v1/properties/{propertyId} - Get
+    1.1 - /v1/properties/{hostID} - Get - All the listing done by done
+     /v1/properties/{hostId}&location={}
+2. /v1/booking - Get - All the bookings user has done
+    /v1/booking/{bookingId} - details for that booking - Get
+    /v1/booking - Post- To create a booking
+3. /v1/list - Get
+    /v1/list - Post
+
+
+
+DB and Schema-
+
+1. Table Hosts -
+    id(int)
+    user_name(varchar(100))
+    email(varcahr(100))
+    phone(varchar(100))
+    location(varchar)
+    created_at(timestamp)
+    updated_at(timestamp)
+    isVerfied(boolean)
+
+2. Tables Properties - 
+
+    id(int)
+    hostId(int)
+    name(varchar)
+    lcoation(varchar)
+    description(varchar(500))
+    price(int)
+    created_at(timestamp)
+
+    foriegn_key{hostid}
+
+
+3. Table Guest
+    guest_id(int)
+    name(varchar)
+    email(varchar)
+    phone(varchar)
+    booking_ids(int)
+    country(varchar)
+
+4. Table bookings 
+    booking_id(int)
+    property_id(int)
+    guets_id(int)
+    start_date(date)
+    end_date(date)
+    status(enums/varchars)
+    payment_info(carchar)
+    created_at, updated_at
+    foriegn_key(guest_id)
+    foriegn_key(propery_id)
+
+
+
+
+Create a booking project - 
+
+
+Create http layer
+APIs Servers and controller for the same
+Server and core and repo layer
+Write schemas and Migrations for DB

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package host.v1;
+option go_package = "github.com/user/airbnb-test/api/proto/v1";
+
+import "google/protobuf/timestamp.proto";
+
+service HostService {
+  rpc GetHost(GetHostRequest) returns (HostResponse);
+  rpc CreateHost(CreateHostRequest) returns (HostResponse);
+}
+
+message Host {
+  int64 id = 1;
+  string user_name = 2;
+  string email = 3;
+  string phone = 4;
+  string location = 5;
+  bool is_verified = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message GetHostRequest {
+  int64 id = 1;
+}
+
+message CreateHostRequest {
+  string user_name = 1;
+  string email = 2;
+  string phone = 3;
+  string location = 4;
+}
+
+message HostResponse {
+  Host host = 1;
+}

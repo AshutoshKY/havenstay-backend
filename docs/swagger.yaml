@@ -1,0 +1,579 @@
+basePath: /
+definitions:
+  github_com_user_airbnb-test_api_proto_v1.AddToWishlistRequest:
+    properties:
+      guest_id:
+        type: integer
+      property_id:
+        type: integer
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.Booking:
+    properties:
+      booking_id:
+        type: integer
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      end_date:
+        description: YYYY-MM-DD
+        type: string
+      guest_id:
+        type: integer
+      payment_info:
+        type: string
+      property_id:
+        type: integer
+      start_date:
+        description: YYYY-MM-DD
+        type: string
+      status:
+        description: e.g., PENDING, CONFIRMED, CANCELLED
+        type: string
+      updated_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.BookingResponse:
+    properties:
+      booking:
+        $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.Booking'
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.CreateBookingRequest:
+    properties:
+      end_date:
+        type: string
+      guest_id:
+        type: integer
+      payment_info:
+        type: string
+      property_id:
+        type: integer
+      start_date:
+        type: string
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.CreateGuestRequest:
+    properties:
+      country:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.CreateHostRequest:
+    properties:
+      email:
+        type: string
+      location:
+        type: string
+      phone:
+        type: string
+      user_name:
+        type: string
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.CreatePropertyRequest:
+    properties:
+      description:
+        type: string
+      host_id:
+        type: integer
+      location:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.GetWishlistResponse:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.WishlistItem'
+        type: array
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.Guest:
+    properties:
+      booking_ids:
+        items:
+          type: integer
+        type: array
+      country:
+        type: string
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      email:
+        type: string
+      guest_id:
+        type: integer
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.GuestResponse:
+    properties:
+      guest:
+        $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.Guest'
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.Host:
+    properties:
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      email:
+        type: string
+      id:
+        type: integer
+      is_verified:
+        type: boolean
+      location:
+        type: string
+      phone:
+        type: string
+      updated_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      user_name:
+        type: string
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.HostResponse:
+    properties:
+      host:
+        $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.Host'
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.ListBookingsResponse:
+    properties:
+      bookings:
+        items:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.Booking'
+        type: array
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse:
+    properties:
+      properties:
+        items:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.Property'
+        type: array
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.Property:
+    properties:
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      description:
+        type: string
+      host_id:
+        type: integer
+      id:
+        type: integer
+      location:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.PropertyResponse:
+    properties:
+      property:
+        $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.Property'
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.WishlistItem:
+    properties:
+      created_at:
+        $ref: '#/definitions/timestamppb.Timestamp'
+      guest_id:
+        type: integer
+      id:
+        type: integer
+      property_id:
+        type: integer
+    type: object
+  github_com_user_airbnb-test_api_proto_v1.WishlistResponse:
+    properties:
+      item:
+        $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.WishlistItem'
+    type: object
+  timestamppb.Timestamp:
+    properties:
+      nanos:
+        description: |-
+          Non-negative fractions of a second at nanosecond resolution. This field is
+          the nanosecond portion of the duration, not an alternative to seconds.
+          Negative second values with fractions must still have non-negative nanos
+          values that count forward in time. Must be between 0 and 999,999,999
+          inclusive.
+        type: integer
+      seconds:
+        description: |-
+          Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must
+          be between -315576000000 and 315576000000 inclusive (which corresponds to
+          0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z).
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@airbnbclone.local
+    name: API Support
+  description: Backend REST API for a Hotel & Room Booking Service
+  termsOfService: http://swagger.io/terms/
+  title: Airbnb Clone API
+  version: "1.0"
+paths:
+  /v1/bookings:
+    get:
+      description: Get all bookings made by a specific guest
+      parameters:
+      - description: Guest ID
+        in: query
+        name: guestId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved guest bookings
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.ListBookingsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List Guest Bookings
+      tags:
+      - bookings
+    post:
+      consumes:
+      - application/json
+      description: Make a booking for a property
+      parameters:
+      - description: Booking creation payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.CreateBookingRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Successfully created booking
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.BookingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create a Booking
+      tags:
+      - bookings
+  /v1/bookings/{id}:
+    get:
+      description: Get details of a single booking by ID
+      parameters:
+      - description: Booking ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved booking
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.BookingResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Booking Not Found
+          schema:
+            type: string
+      summary: Get a Booking
+      tags:
+      - bookings
+  /v1/guests:
+    post:
+      consumes:
+      - application/json
+      description: Register a new guest on the platform
+      parameters:
+      - description: Guest creation payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.CreateGuestRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Successfully created guest
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.GuestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create a Guest
+      tags:
+      - guests
+  /v1/guests/{id}:
+    get:
+      description: Get details of a single guest by ID
+      parameters:
+      - description: Guest ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved guest
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.GuestResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Guest Not Found
+          schema:
+            type: string
+      summary: Get a Guest
+      tags:
+      - guests
+  /v1/hosts:
+    post:
+      consumes:
+      - application/json
+      description: Register a new host on the platform
+      parameters:
+      - description: Host creation payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.CreateHostRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Successfully created host
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.HostResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create a Host
+      tags:
+      - hosts
+  /v1/hosts/{id}:
+    get:
+      description: Get details of a single host by ID
+      parameters:
+      - description: Host ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved host
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.HostResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Host Not Found
+          schema:
+            type: string
+      summary: Get a Host
+      tags:
+      - hosts
+  /v1/lists:
+    get:
+      description: Retrieve the wishlist of a specific guest
+      parameters:
+      - description: Guest ID
+        in: query
+        name: guestId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved guest's wishlist
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.GetWishlistResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Get Wishlist
+      tags:
+      - wishlists
+    post:
+      consumes:
+      - application/json
+      description: Add a property to a guest's wishlist
+      parameters:
+      - description: Wishlist addition payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.AddToWishlistRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Successfully added to wishlist
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.WishlistResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Add to Wishlist
+      tags:
+      - wishlists
+  /v1/properties:
+    get:
+      description: Get a list of all properties
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved list of properties
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List properties
+      tags:
+      - properties
+    post:
+      consumes:
+      - application/json
+      description: Create a new property listing
+      parameters:
+      - description: Property creation payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.CreatePropertyRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Successfully created property
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.PropertyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: Create a Property
+      tags:
+      - properties
+  /v1/properties/{id}:
+    get:
+      description: Get details of a single property by its ID
+      parameters:
+      - description: Property ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved property
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.PropertyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Property Not Found
+          schema:
+            type: string
+      summary: Get Property Details
+      tags:
+      - properties
+  /v1/properties/host/{hostId}:
+    get:
+      description: Get all properties listed by a specific host, with optional location
+        filtering
+      parameters:
+      - description: Host ID
+        in: path
+        name: hostId
+        required: true
+        type: integer
+      - description: Location filter
+        in: query
+        name: location
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successfully retrieved host properties
+          schema:
+            $ref: '#/definitions/github_com_user_airbnb-test_api_proto_v1.ListPropertiesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: List Properties by Host
+      tags:
+      - properties
+swagger: "2.0"

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package booking.v1;
+option go_package = "github.com/user/airbnb-test/api/proto/v1";
+
+import "google/protobuf/timestamp.proto";
+
+service BookingService {
+  rpc GetBooking(GetBookingRequest) returns (BookingResponse);
+  rpc ListGuestBookings(ListGuestBookingsRequest) returns (ListBookingsResponse);
+  rpc CreateBooking(CreateBookingRequest) returns (BookingResponse);
+}
+
+message Booking {
+  int64 booking_id = 1;
+  int64 property_id = 2;
+  int64 guest_id = 3;
+  string start_date = 4; // YYYY-MM-DD
+  string end_date = 5; // YYYY-MM-DD
+  string status = 6; // e.g., PENDING, CONFIRMED, CANCELLED
+  string payment_info = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message GetBookingRequest {
+  int64 booking_id = 1;
+}
+
+message ListGuestBookingsRequest {
+  int64 guest_id = 1;
+}
+
+message CreateBookingRequest {
+  int64 property_id = 1;
+  int64 guest_id = 2;
+  string start_date = 3;
+  string end_date = 4;
+  string payment_info = 5;
+}
+
+message BookingResponse {
+  Booking booking = 1;
+}
+
+message ListBookingsResponse {
+  repeated Booking bookings = 1;
+}
